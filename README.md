@@ -1,4 +1,3 @@
-# 🐊 AlligatorGame
 
 ![Alligator Game](https://media.giphy.com/media/E0sm9I5XLL7eE/giphy.gif)
 
