@@ -12,6 +12,8 @@
 		8A39A383223BA73F002EB93B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A39A381223BA73F002EB93B /* Main.storyboard */; };
 		8A39A385223BA740002EB93B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A39A384223BA740002EB93B /* Assets.xcassets */; };
 		8A39A388223BA740002EB93B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A39A386223BA740002EB93B /* LaunchScreen.storyboard */; };
+		8AD81B1B2242707800FFC27D /* MultipeerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD81B1A2242707800FFC27D /* MultipeerService.swift */; };
+		8AD81B202242738A00FFC27D /* ElementCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD81B1F2242738A00FFC27D /* ElementCreation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		8A39A384223BA740002EB93B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A39A387223BA740002EB93B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A39A389223BA740002EB93B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AD81B1A2242707800FFC27D /* MultipeerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerService.swift; sourceTree = "<group>"; };
+		8AD81B1F2242738A00FFC27D /* ElementCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCreation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,32 @@
 		8A39A37C223BA73F002EB93B /* alligator-game */ = {
 			isa = PBXGroup;
 			children = (
+				8AD81B1A2242707800FFC27D /* MultipeerService.swift */,
 				8A39A37D223BA73F002EB93B /* AppDelegate.swift */,
 				8A39A37F223BA73F002EB93B /* ViewController.swift */,
+				8A39A389223BA740002EB93B /* Info.plist */,
+				8AD81B1C2242721A00FFC27D /* Helpers */,
+				8AD81B192241D11000FFC27D /* Resources */,
+			);
+			path = "alligator-game";
+			sourceTree = "<group>";
+		};
+		8AD81B192241D11000FFC27D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				8A39A381223BA73F002EB93B /* Main.storyboard */,
 				8A39A384223BA740002EB93B /* Assets.xcassets */,
 				8A39A386223BA740002EB93B /* LaunchScreen.storyboard */,
-				8A39A389223BA740002EB93B /* Info.plist */,
 			);
-			path = "alligator-game";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8AD81B1C2242721A00FFC27D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8AD81B1F2242738A00FFC27D /* ElementCreation.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +158,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A39A380223BA73F002EB93B /* ViewController.swift in Sources */,
+				8AD81B1B2242707800FFC27D /* MultipeerService.swift in Sources */,
+				8AD81B202242738A00FFC27D /* ElementCreation.swift in Sources */,
 				8A39A37E223BA73F002EB93B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
