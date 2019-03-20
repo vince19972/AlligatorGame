@@ -14,6 +14,7 @@
 		8A39A388223BA740002EB93B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A39A386223BA740002EB93B /* LaunchScreen.storyboard */; };
 		8AD81B1B2242707800FFC27D /* MultipeerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD81B1A2242707800FFC27D /* MultipeerService.swift */; };
 		8AD81B202242738A00FFC27D /* ElementCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD81B1F2242738A00FFC27D /* ElementCreation.swift */; };
+		8AD81B242242B93100FFC27D /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD81B232242B93100FFC27D /* AlertMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		8A39A389223BA740002EB93B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AD81B1A2242707800FFC27D /* MultipeerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerService.swift; sourceTree = "<group>"; };
 		8AD81B1F2242738A00FFC27D /* ElementCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCreation.swift; sourceTree = "<group>"; };
+		8AD81B232242B93100FFC27D /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				8AD81B1F2242738A00FFC27D /* ElementCreation.swift */,
+				8AD81B232242B93100FFC27D /* AlertMessage.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A39A380223BA73F002EB93B /* ViewController.swift in Sources */,
+				8AD81B242242B93100FFC27D /* AlertMessage.swift in Sources */,
 				8AD81B1B2242707800FFC27D /* MultipeerService.swift in Sources */,
 				8AD81B202242738A00FFC27D /* ElementCreation.swift in Sources */,
 				8A39A37E223BA73F002EB93B /* AppDelegate.swift in Sources */,

@@ -9,11 +9,22 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
+    
+    //
+    /*-- MARK: global variables --*/
+    //
+    weak var nameInput: UITextField!
+    
 
+    //
+    /*-- MARK: viewDidLoad --*/
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //
         /*-- MARK: create subviews --*/
+        //
         let CreateElement = ElementCreation()
         
         // input elements container
@@ -31,7 +42,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 .widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         
         // name input textField
-        let nameInput = CreateElement.textField(placehoderText: "please input your name")
+        nameInput = CreateElement.textField(placehoderText: "please input your name")
             inputContainer.addSubview(nameInput)
             nameInput
                 .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
@@ -40,17 +51,43 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     equalTo: inputContainer.centerYAnchor,
                     constant: nameInput.frame.size.height / 2
                 ).isActive = true
+            nameInput.delegate = self
         
         // submit button
         let submitButton = CreateElement.submitButton(buttonText: "submit")
             inputContainer.addSubview(submitButton)
             submitButton
                 .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
+            submitButton.layer.borderWidth = 0
             submitButton
                 .topAnchor.constraint(
                     equalTo: nameInput.bottomAnchor,
                     constant: 12
                 ).isActive = true
+            submitButton.addTarget(self, action: #selector(self.submitButtonPressed(_:)), for: .touchUpInside)
+    }
+    
+    //
+    /*-- MARK: submit button actions --*/
+    //
+    @objc func submitButtonPressed(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+        
+        // Check text field is not empty, otherwise save to user defaults.
+        if (self.nameInput.text?.isEmpty)! {
+            AlertMessage().present(viewController: self, message: "Enter Valid Player Id")
+        } else {
+            print(self.nameInput.text!)
+        }
+    }
+    
+    //
+    /*-- MARK: textField actions --*/
+    //
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+
+        return false
     }
 
 
