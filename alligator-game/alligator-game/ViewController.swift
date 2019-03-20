@@ -6,90 +6,100 @@
 //  Copyright © 2019 vinceshao. All rights reserved.
 //
 
+/*--------- REFERENCE CREDITS ---------*/
+//
+//
+// (1) Using child view controllers: https://www.swiftbysundell.com/posts/using-child-view-controllers-as-plugins-in-swift
+//
+//
+/*-------------------------------------*/
+
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+//
+/*-- MARK: global variables --*/
+//
+let ServiceType = "alligator-game"
+
+// ViewController
+class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDelegate, EntryViewDelegate {
     
     //
-    /*-- MARK: global variables --*/
+    /*-- MARK: class variables --*/
     //
     weak var nameInput: UITextField!
+    var multipeerService: MultipeerService?
     
-
-    //
-    /*-- MARK: viewDidLoad --*/
-    //
+    // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //
-        /*-- MARK: create subviews --*/
+        /*-- MARK: childViews appending --*/
         //
-        let CreateElement = ElementCreation()
-        
-        // input elements container
-        let inputContainer =  UIView()
-            self.view.addSubview(inputContainer)
-            inputContainer
-                .translatesAutoresizingMaskIntoConstraints = false
-            inputContainer
-                .centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-            inputContainer
-                .centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-            inputContainer
-                .heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
-            inputContainer
-                .widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        
-        // name input textField
-        nameInput = CreateElement.textField(placehoderText: "please input your name")
-            inputContainer.addSubview(nameInput)
-            nameInput
-                .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
-            nameInput
-                .centerYAnchor.constraint(
-                    equalTo: inputContainer.centerYAnchor,
-                    constant: nameInput.frame.size.height / 2
-                ).isActive = true
-            nameInput.delegate = self
-        
-        // submit button
-        let submitButton = CreateElement.submitButton(buttonText: "submit")
-            inputContainer.addSubview(submitButton)
-            submitButton
-                .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
-            submitButton.layer.borderWidth = 0
-            submitButton
-                .topAnchor.constraint(
-                    equalTo: nameInput.bottomAnchor,
-                    constant: 12
-                ).isActive = true
-            submitButton.addTarget(self, action: #selector(self.submitButtonPressed(_:)), for: .touchUpInside)
+        // entry view
+        let entryViewController = EntryViewController()
+        add(entryViewController)
+        entryViewController.delegate = self
     }
     
     //
-    /*-- MARK: submit button actions --*/
+    /*-- MARK: childViews functions --*/
     //
-    @objc func submitButtonPressed(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-        
-        // Check text field is not empty, otherwise save to user defaults.
-        if (self.nameInput.text?.isEmpty)! {
+    // EntryViewDelegate protocols
+    func submitButtonTapped(nameInput: UITextField) {
+
+        // Check text field is not empty, otherwise start P2P connection
+        if (nameInput.text?.isEmpty)! {
             AlertMessage().present(viewController: self, message: "Enter Valid Player Id")
         } else {
-            print(self.nameInput.text!)
+            // MARK: start P2P connection
+            self.startMultipeerService(displayName: self.nameInput.text!)
         }
     }
     
+    
     //
-    /*-- MARK: textField actions --*/
+    /*-- MARK: multiPeer functions --*/
     //
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
-
-        return false
+    
+    // start multipeer service with display name.
+    func startMultipeerService(displayName: String) {
+        self.multipeerService = nil
+        self.multipeerService = MultipeerService(dispayName: displayName)
+        self.multipeerService?.delegate = self
     }
-
+    
+    // MultipeerServiceDelegate protocols
+    func connectedDevicesChanged(manager: MultipeerService, connectedDevices: [String]) {
+        print("test")
+    }
+    func receivedMsg(manager: MultipeerService, msg: String) {
+        print("test")
+    }
 
 }
 
+
+//
+/*-- MARK: childView add and remove functions --*/
+//
+extension UIViewController {
+    func add(_ child: UIViewController) {
+        addChild(child)
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+    }
+    
+    func remove() {
+        // Just to be safe, we check that this view controller
+        // is actually added to a parent before removing it.
+        guard parent != nil else {
+            return
+        }
+        
+        willMove(toParent: nil)
+        view.removeFromSuperview()
+        removeFromParent()
+    }
+}
