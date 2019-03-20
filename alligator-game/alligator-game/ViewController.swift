@@ -25,36 +25,49 @@ let ServiceType = "alligator-game"
 class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDelegate, EntryViewDelegate {
     
     //
+    /*-- MARK: child views properties --*/
+    //
+    // keep track of present view type
+    enum childViewType: String {
+        case entry = "entryView"
+        case staging = "stagingView"
+    }
+    var presentView: String = childViewType.entry.rawValue
+    
+    // instantiate child views
+    let entryViewController = EntryViewController()
+    let stagingViewController = StagingViewController()
+    
+    
+    //
     /*-- MARK: class variables --*/
     //
     weak var nameInput: UITextField!
     var multipeerService: MultipeerService?
     
+    
     // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //
-        /*-- MARK: childViews appending --*/
-        //
-        // entry view
-        let entryViewController = EntryViewController()
-        add(entryViewController)
+        // child view settings
         entryViewController.delegate = self
+        updatePresentChildViewTarget(childViewType.entry)
     }
+    
     
     //
     /*-- MARK: childViews functions --*/
     //
     // EntryViewDelegate protocols
     func submitButtonTapped(nameInput: UITextField) {
-
         // Check text field is not empty, otherwise start P2P connection
         if (nameInput.text?.isEmpty)! {
             AlertMessage().present(viewController: self, message: "Enter Valid Player Id")
         } else {
             // MARK: start P2P connection
-            self.startMultipeerService(displayName: self.nameInput.text!)
+            self.startMultipeerService(displayName: nameInput.text!)
+            updatePresentChildViewTarget(childViewType.staging)
         }
     }
     
@@ -62,20 +75,37 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
     //
     /*-- MARK: multiPeer functions --*/
     //
-    
-    // start multipeer service with display name.
     func startMultipeerService(displayName: String) {
         self.multipeerService = nil
         self.multipeerService = MultipeerService(dispayName: displayName)
         self.multipeerService?.delegate = self
     }
-    
     // MultipeerServiceDelegate protocols
     func connectedDevicesChanged(manager: MultipeerService, connectedDevices: [String]) {
         print("test")
     }
     func receivedMsg(manager: MultipeerService, msg: String) {
         print("test")
+    }
+    
+    
+    //
+    /*-- MARK: VireController helper functions --*/
+    //
+    func updatePresentChildViewTarget(_ viewType: childViewType) {
+        self.presentView = viewType.rawValue
+        
+        switch self.presentView {
+            case childViewType.entry.rawValue:
+                stagingViewController.remove()
+                add(entryViewController)
+            case childViewType.staging.rawValue:
+                entryViewController.remove()
+                add(stagingViewController)
+            default:
+                stagingViewController.remove()
+                add(entryViewController)
+        }
     }
 
 }
