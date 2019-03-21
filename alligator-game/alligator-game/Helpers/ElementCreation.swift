@@ -16,7 +16,9 @@ import UIKit
 
 class ElementCreation {
     
+    //
     /*-- textField --*/
+    //
     func textField (placehoderText: String) -> TextField {
         let textField = TextField()
         
@@ -35,7 +37,9 @@ class ElementCreation {
         return textField
     }
     
+    //
     /*-- submit button --*/
+    //
     func submitButton(buttonText: String) -> UIButton {
         let button = UIButton()
         

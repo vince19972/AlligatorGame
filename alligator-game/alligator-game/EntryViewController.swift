@@ -68,13 +68,15 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
         inputContainer.addSubview(submitButton)
         submitButton
             .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
-        submitButton.layer.borderWidth = 0
         submitButton
             .topAnchor.constraint(
                 equalTo: nameInput.bottomAnchor,
                 constant: 12
             ).isActive = true
-        submitButton.addTarget(self, action: #selector(self.submitButtonTapped(_:)), for: .touchUpInside)
+        submitButton
+            .layer.borderWidth = 0
+        submitButton
+            .addTarget(self, action: #selector(self.submitButtonTapped(_:)), for: .touchUpInside)
     }
     
     //
