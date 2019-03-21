@@ -23,7 +23,8 @@ let ServiceType = "alligator-game"
 let MinimumPlayerNumber = 1
 
 
-class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDelegate, EntryViewDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDelegate, EntryViewDelegate, StagingViewDelegate {
+    
     
     //
     /*-- MARK: child views properties --*/
@@ -52,6 +53,8 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
         
         // child view settings
         entryViewController.delegate = self
+        stagingViewController.delegate = self
+        
         updatePresentChildViewTarget(childViewType.entry)
     }
     
@@ -69,6 +72,10 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
             self.startMultipeerService(displayName: nameInput.text!)
             updatePresentChildViewTarget(childViewType.staging)
         }
+    }
+    // StagingViewDelegate protocols
+    func startButtonTapped() {
+        print("🦑🦑🦑🦑🦑🦑")
     }
     
     
