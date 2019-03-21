@@ -14,6 +14,7 @@
 		8A39A388223BA740002EB93B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A39A386223BA740002EB93B /* LaunchScreen.storyboard */; };
 		8AD503A42242C8C2005EC57E /* StagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD503A32242C8C2005EC57E /* StagingViewController.swift */; };
 		8AD503A62242D235005EC57E /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD503A52242D235005EC57E /* EntryViewController.swift */; };
+		8AD503A822431FA1005EC57E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD503A722431FA1005EC57E /* GameViewController.swift */; };
 		8AD81B1B2242707800FFC27D /* MultipeerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD81B1A2242707800FFC27D /* MultipeerService.swift */; };
 		8AD81B202242738A00FFC27D /* ElementCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD81B1F2242738A00FFC27D /* ElementCreation.swift */; };
 		8AD81B242242B93100FFC27D /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD81B232242B93100FFC27D /* AlertMessage.swift */; };
@@ -29,6 +30,7 @@
 		8A39A389223BA740002EB93B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AD503A32242C8C2005EC57E /* StagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagingViewController.swift; sourceTree = "<group>"; };
 		8AD503A52242D235005EC57E /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		8AD503A722431FA1005EC57E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		8AD81B1A2242707800FFC27D /* MultipeerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerService.swift; sourceTree = "<group>"; };
 		8AD81B1F2242738A00FFC27D /* ElementCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCreation.swift; sourceTree = "<group>"; };
 		8AD81B232242B93100FFC27D /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				8A39A37F223BA73F002EB93B /* ViewController.swift */,
 				8AD503A52242D235005EC57E /* EntryViewController.swift */,
 				8AD503A32242C8C2005EC57E /* StagingViewController.swift */,
+				8AD503A722431FA1005EC57E /* GameViewController.swift */,
 				8A39A389223BA740002EB93B /* Info.plist */,
 				8AD81B1C2242721A00FFC27D /* Helpers */,
 				8AD81B192241D11000FFC27D /* Resources */,
@@ -170,6 +173,7 @@
 				8AD81B242242B93100FFC27D /* AlertMessage.swift in Sources */,
 				8AD81B1B2242707800FFC27D /* MultipeerService.swift in Sources */,
 				8AD81B202242738A00FFC27D /* ElementCreation.swift in Sources */,
+				8AD503A822431FA1005EC57E /* GameViewController.swift in Sources */,
 				8AD503A42242C8C2005EC57E /* StagingViewController.swift in Sources */,
 				8AD503A62242D235005EC57E /* EntryViewController.swift in Sources */,
 				8A39A37E223BA73F002EB93B /* AppDelegate.swift in Sources */,

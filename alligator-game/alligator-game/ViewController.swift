@@ -21,6 +21,7 @@ import UIKit
 //
 let ServiceType = "alligator-game"
 let MinimumPlayerNumber = 1
+let GAME_IS_STARTED = "GAME_STARTED"
 
 
 class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDelegate, EntryViewDelegate, StagingViewDelegate {
@@ -33,12 +34,14 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
     enum childViewType: String {
         case entry = "entryView"
         case staging = "stagingView"
+        case game = "gameView"
     }
     var presentView: String = childViewType.entry.rawValue
     
     // instantiate child views
     let entryViewController = EntryViewController()
     let stagingViewController = StagingViewController()
+    let gameViewController = GameViewController()
     
     
     //
@@ -70,12 +73,20 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
         } else {
             // MARK: start P2P connection
             self.startMultipeerService(displayName: nameInput.text!)
+            
+            // update actions
             updatePresentChildViewTarget(childViewType.staging)
+            self.stagingViewController.updateConnectedNumber(1)
         }
     }
     // StagingViewDelegate protocols
     func startButtonTapped() {
-        print("🦑🦑🦑🦑🦑🦑")
+        // When the start button is tapped in stagingView,
+        // updatePresentChildViewTarget called here only update triggered device's child view.
+        // Note that it has to be called in P2P receivedMsg function,
+        // in order to trigger connected devices' child view as well.
+        updatePresentChildViewTarget(childViewType.game)
+        self.multipeerService?.send(msg: GAME_IS_STARTED)
     }
     
     
@@ -90,12 +101,15 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
     // MultipeerServiceDelegate protocols
     func connectedDevicesChanged(manager: MultipeerService, connectedDevices: [String]) {
         DispatchQueue.main.async {
-            self.stagingViewController.updateConnectedNumber(manager.session.connectedPeers.count + 1)
+            self.stagingViewController.updateConnectedNumber(manager.session.connectedPeers.count)
         }
     }
     func receivedMsg(manager: MultipeerService, msg: String) {
         DispatchQueue.main.async {
-            print("hello received")
+            // update connected devices' child view
+            if msg == GAME_IS_STARTED {
+                self.updatePresentChildViewTarget(childViewType.game)
+            }
         }
     }
     
@@ -109,12 +123,23 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
         switch self.presentView {
             case childViewType.entry.rawValue:
                 stagingViewController.remove()
+                gameViewController.remove()
+                
                 add(entryViewController)
             case childViewType.staging.rawValue:
                 entryViewController.remove()
+                gameViewController.remove()
+                
                 add(stagingViewController)
+            case childViewType.game.rawValue:
+                entryViewController.remove()
+                stagingViewController.remove()
+                
+                add(gameViewController)
             default:
                 stagingViewController.remove()
+                gameViewController.remove()
+                
                 add(entryViewController)
         }
     }
