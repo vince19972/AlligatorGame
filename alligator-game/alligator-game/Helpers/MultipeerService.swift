@@ -36,7 +36,8 @@ class MultipeerService : NSObject {
         
         super.init()
         
-        session = MCSession(peer: myPeerId, securityIdentity: nil, encryptionPreference: .required)
+        // encryption???????????
+        session = MCSession(peer: myPeerId, securityIdentity: nil, encryptionPreference: .none)
         session.delegate = self
         
         self.serviceAdvertiser.delegate = self
