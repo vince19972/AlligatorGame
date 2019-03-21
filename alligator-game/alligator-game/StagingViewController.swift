@@ -86,7 +86,7 @@ class StagingViewController: UIViewController {
     //
     func updateConnectedNumber(_ connectedNumber: Int) {
         // update number
-        self.connectedNumber = connectedNumber
+        self.connectedNumber += connectedNumber
         self.connectedNumberLabel.text = String(self.connectedNumber)
         
         // enable startButton if connected number reached threshold
