@@ -20,8 +20,9 @@ import UIKit
 /*-- MARK: global variables --*/
 //
 let ServiceType = "alligator-game"
+let MinimumPlayerNumber = 1
 
-// ViewController
+
 class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDelegate, EntryViewDelegate {
     
     //
@@ -46,7 +47,6 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
     var multipeerService: MultipeerService?
     
     
-    // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,10 +82,14 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
     }
     // MultipeerServiceDelegate protocols
     func connectedDevicesChanged(manager: MultipeerService, connectedDevices: [String]) {
-        print("test")
+        DispatchQueue.main.async {
+            self.stagingViewController.updateConnectedNumber(manager.session.connectedPeers.count + 1)
+        }
     }
     func receivedMsg(manager: MultipeerService, msg: String) {
-        print("test")
+        DispatchQueue.main.async {
+            print("hello received")
+        }
     }
     
     
