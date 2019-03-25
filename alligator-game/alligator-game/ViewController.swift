@@ -12,24 +12,37 @@
 //
 
 import UIKit
+var userNum:Int = 3  // the user number will depends on Vince's code, the string of users, and count the string.?
 
 class ViewController: UIViewController{
     
     @IBOutlet weak var life: UITextField!
     var count = 0
+    var deathCount = 0
+    //life view test, will replace with Anna's UI file
     let items = ["❤️❤️❤️❤️","❤️❤️❤️","❤️❤️","❤️"," "]
-  
+   // var userNum:Int = 2
+    let randomNum = Int(arc4random_uniform(UInt32(userNum)))
+
 
    
-    
-// lazy var btn : teethView = teethView()
-//
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "Playing")
+        backgroundImage.contentMode =  UIView.ContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
         self.life.sizeToFit()
         life.text = "❤️❤️❤️❤️❤️"
         
         drawTeeth()
+        
+        //let randomNum = userNum.random()
+       
+        //challange: make the layer a string, and append the string?
+        
+        
         self.view.layer.addSublayer(layer)
         self.view.layer.addSublayer(layer2)
         self.view.layer.addSublayer(layer3)
@@ -40,20 +53,33 @@ class ViewController: UIViewController{
 
     }
     
+    
+    
     var x1 = 256.17
     var x2 = 233.5
     var x3 = 282.5
     var x4 = 260.56
     var x5 = 256.17
-    let randomNum = Int.random(in: 0 ..< 3)
+    
+ 
+    
+ 
     
      let layer = CAShapeLayer()
      let layer2 = CAShapeLayer()
      let layer3 = CAShapeLayer()
     
+//    func addSublayer(_ layer: CAShapeLayer){
+//
+//    }
+    
+    
+    
     func drawTeeth(){
         //// Color Declarations
-        let color = UIColor(red: 0.009, green: 0.304, blue: 0.159, alpha: 0.985)
+        //let color = UIColor(red: 0.009, green: 0.304, blue: 0.159, alpha: 0.985)
+        //chenge to white teeth color
+        let color = UIColor.white
 
         //// teeth 1 Bezier Drawing
         let bezierPath = UIBezierPath()
@@ -155,10 +181,17 @@ class ViewController: UIViewController{
             count = count + 1
             if count  < 6 {
             life.text = items[count-1]
-    
-            print ("died")
-           
+            deathCount = deathCount + 1
+                
+                if deathCount == 5 {
+                    print ("died")
+                    
+                    //then go to next view
+                    
+                }
             }
+            
+            
         }
     }
 
