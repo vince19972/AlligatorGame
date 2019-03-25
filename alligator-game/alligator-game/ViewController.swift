@@ -9,7 +9,9 @@
 
 // main function: 1. buttons of teeth (svg)  2.  random the bad teeth
 //3.trigger bad teeth - next view  4. click to lock the tooth.  5. life view
-//
+
+//need to do:
+//6. add a function of - text view of user names  7.make a function of generate teeth.  8. UI saparete layers
 
 import UIKit
 var userNum:Int = 3  // the user number will depends on Vince's code, the string of users, and count the string.?
