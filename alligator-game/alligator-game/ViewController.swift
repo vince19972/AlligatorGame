@@ -11,6 +11,8 @@
 //
 // (1) Using child view controllers: https://www.swiftbysundell.com/posts/using-child-view-controllers-as-plugins-in-swift
 //
+// (2) Moving view with keyboard actions: https://stackoverflow.com/questions/26070242/move-view-with-keyboard-using-swift
+//
 //
 /*-------------------------------------*/
 
@@ -63,8 +65,40 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
         // child view settings
         entryViewController.delegate = self
         stagingViewController.delegate = self
-        
         updatePresentChildViewTarget(childViewType.entry)
+        
+        /* REFERENCE CREDIT - (2) */
+        // keyboard events listening
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    //
+    /*-- MARK: keyboard events --*/
+    //
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+                entryViewController.highlightNameField(keyboardHeight: keyboardSize.height)
+            }
+        }
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+            entryViewController.highlightNameField(toHighlight: false)
+        }
     }
     
     

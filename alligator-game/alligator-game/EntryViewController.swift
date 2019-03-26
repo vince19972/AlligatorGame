@@ -22,8 +22,10 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
     //
     /*-- MARK: class variables --*/
     //
+    
     // subviews
     weak var nameInput: UITextField!
+    weak var submitButton: UIButton!
     
     // delegate
     var delegate: EntryViewDelegate?
@@ -80,7 +82,7 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
         nameInput.delegate = self
         
         // submit button
-        let submitButton = CreateElement.submitButton(buttonText: "submit", buttonImage: "entry_submit-btn")
+        submitButton = CreateElement.submitButton(buttonText: "submit", buttonImage: "entry_submit-btn")
         inputContainer
             .addSubview(submitButton)
         submitButton
@@ -114,6 +116,29 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
         
         return false
+    }
+    
+    func highlightNameField(toHighlight: Bool = true, keyboardHeight: CGFloat = 0) {
+        
+        if toHighlight {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.submitButton.isHidden = true
+                self.nameInput.transform = self.nameInput.transform.translatedBy(x: 0, y: keyboardHeight / 2)
+            }, completion: { _ in
+                UIView.animate(withDuration: 0, animations: {
+                    self.submitButton.alpha = 0
+                })
+            })
+        } else {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.nameInput.transform = CGAffineTransform.identity
+                self.submitButton.alpha = 1
+            }, completion: { _ in
+                UIView.animate(withDuration: 0, animations: {
+                    self.submitButton.isHidden = false
+                })
+            })
+        }
     }
 
 }
