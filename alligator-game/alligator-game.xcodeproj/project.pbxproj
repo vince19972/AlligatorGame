@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A185A872249B5380004D978 /* DeadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A185A862249B5380004D978 /* DeadViewController.swift */; };
+		8A185A892249B5480004D978 /* SurviveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A185A882249B5480004D978 /* SurviveViewController.swift */; };
 		8A39A37E223BA73F002EB93B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39A37D223BA73F002EB93B /* AppDelegate.swift */; };
 		8A39A380223BA73F002EB93B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39A37F223BA73F002EB93B /* ViewController.swift */; };
 		8A39A383223BA73F002EB93B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A39A381223BA73F002EB93B /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A185A862249B5380004D978 /* DeadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadViewController.swift; sourceTree = "<group>"; };
+		8A185A882249B5480004D978 /* SurviveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurviveViewController.swift; sourceTree = "<group>"; };
 		8A39A37A223BA73F002EB93B /* alligator-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "alligator-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A39A37D223BA73F002EB93B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A39A37F223BA73F002EB93B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 				8AD503A52242D235005EC57E /* EntryViewController.swift */,
 				8AD503A32242C8C2005EC57E /* StagingViewController.swift */,
 				8AD503A722431FA1005EC57E /* GameViewController.swift */,
+				8A185A862249B5380004D978 /* DeadViewController.swift */,
+				8A185A882249B5480004D978 /* SurviveViewController.swift */,
 				8A39A389223BA740002EB93B /* Info.plist */,
 				8AD81B1C2242721A00FFC27D /* Helpers */,
 				8AD81B192241D11000FFC27D /* Resources */,
@@ -171,10 +177,12 @@
 			files = (
 				8A39A380223BA73F002EB93B /* ViewController.swift in Sources */,
 				8AD81B242242B93100FFC27D /* AlertMessage.swift in Sources */,
+				8A185A872249B5380004D978 /* DeadViewController.swift in Sources */,
 				8AD81B1B2242707800FFC27D /* MultipeerService.swift in Sources */,
 				8AD81B202242738A00FFC27D /* ElementCreation.swift in Sources */,
 				8AD503A822431FA1005EC57E /* GameViewController.swift in Sources */,
 				8AD503A42242C8C2005EC57E /* StagingViewController.swift in Sources */,
+				8A185A892249B5480004D978 /* SurviveViewController.swift in Sources */,
 				8AD503A62242D235005EC57E /* EntryViewController.swift in Sources */,
 				8A39A37E223BA73F002EB93B /* AppDelegate.swift in Sources */,
 			);
