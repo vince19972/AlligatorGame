@@ -19,6 +19,7 @@ var userNum:Int = 20 // the user number will depends on Vince's code, the string
 
 class ViewController: UIViewController{
     
+    
     @IBOutlet weak var life: UITextField!
     var count = 0
     var deathCount = 0
@@ -52,6 +53,7 @@ class ViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        userNum = userNum + 5
         random_sequence = Array(0...userNum-1)
         random_sequence.shuffle()
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
