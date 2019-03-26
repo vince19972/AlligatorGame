@@ -15,7 +15,7 @@
 
 
 import UIKit
-var userNum:Int = 20 // the user number will depends on Vince's code, the string of users, and count the string.?
+var userNum:Int = 16 // the user number will depends on Vince's code, the string of users, and count the string.?
 
 class ViewController: UIViewController{
     
@@ -34,7 +34,7 @@ class ViewController: UIViewController{
     
     
     var layers = [] as [CAShapeLayer]
-    var teethOffset = 385/userNum*2
+    var teethOffset = 385/userNum*2-10
     var teethOffset2 = 385/11
     var x2 = 140.5
     //let x3 = x2 + teethOffset
@@ -150,38 +150,7 @@ class ViewController: UIViewController{
         
         //draw upper teeth
         
-        
-        for p:Int in 0...10{
-            // teeth 1 Bezier Drawing
-//            context.saveGState()
-//            context.translateBy(x:209.62, y:179.5)
-//            context.rotate(by: -164.1 * CGFloat.pi/180)
-//
-            let bezierPath2 = UIBezierPath()
-            //            Double offset = Double(i)
-            let temp_xx1 = xx1 + Double(p)*Double(teethOffset2)
-            let temp_xx2 = xx2 + Double(p)*Double(teethOffset2)
-            let temp_xx3 = xx3 + Double(p)*Double(teethOffset2)
-            
-            bezierPath2.move(to: CGPoint(x: temp_xx1 , y: 0.0))
-            bezierPath2.addLine(to: CGPoint(x: temp_xx2, y: 46.0))
-            bezierPath2.addLine(to: CGPoint(x: temp_xx3, y: 46.0))
-            
-            bezierPath2.close()
-            color.setFill()
-            bezierPath2.fill()
-            UIColor.gray.setStroke()
-            bezierPath2.lineWidth = 1
-            bezierPath2.stroke()
-            let layer2 = CAShapeLayer()
-            layer2.path = bezierPath2.cgPath
-            layer2.fillColor = color.cgColor
-            layer2.strokeColor = UIColor.clear.cgColor
-            layers.append(layer2)
-            
-           // context.restoreGState()
-            
-        }
+    
   
 
 
