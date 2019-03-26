@@ -14,6 +14,8 @@ class GameViewController: UIViewController {
     //@IBOutlet weak var life: UITextField!
     var count = 0
     var deathCount = 0
+    var notdiedCount = 0
+    var death = false
     //life view test, will replace with Anna's UI file
     let items = ["❤️❤️❤️❤️","❤️❤️❤️","❤️❤️","❤️"," "]
     // var userNum:Int = 2
@@ -146,12 +148,10 @@ class GameViewController: UIViewController {
     
     
     
-    var death = false
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         let point = touch!.location(in: self.view)
         //let layers = [layer, layer2, layer3]
-        
         
         
         //teeth touch
@@ -159,9 +159,14 @@ class GameViewController: UIViewController {
             let l = layers[random_sequence[i]]
             
             if l.path!.contains(point) {
-                print ("bad")
-                l.fillColor = UIColor.red.cgColor
-                death = true
+                
+                if (l.fillColor == UIColor.red.cgColor){
+                    death = false
+                }else{
+                    l.fillColor = UIColor.red.cgColor
+                    print ("bad")
+                    death = true
+                }
             }
             
         }
@@ -169,14 +174,16 @@ class GameViewController: UIViewController {
             let l = layers[random_sequence[i]]
             if l.path!.contains(point) {
                 l.fillColor = UIColor.black.cgColor
+                
+                if (l.fillColor == UIColor.black.cgColor) {
+                    //donothing
+                }else{
                 //l.isHidden = true
-                print ("ok")
-                death = false
+                //print ("ok")
+                }
+                 death = false
             }
         }
-        
-        
-        
         
         // died to change view
         
@@ -189,13 +196,24 @@ class GameViewController: UIViewController {
                 
                 if deathCount == 5 {
                     print ("died")
-                    
+
                     //then go to next view
-                    
+
                 }
             }
             
             
+        }
+        
+        //not died to change view
+        if death == false{
+            notdiedCount = notdiedCount + 1
+            if notdiedCount == userNum - 5{
+               print("survived!!!")
+                
+                //then go to next view
+                
+            }
         }
     }
 
