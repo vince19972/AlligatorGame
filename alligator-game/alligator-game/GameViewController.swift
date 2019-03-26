@@ -7,7 +7,7 @@
 //
 
 import UIKit
-var userNum:Int = 16 // the user number will depends on Vince's code, the string of users, and count the string.?
+var userNum:Int = 20 // the user number will depends on Vince's code, the string of users, and count the string.?
 
 class GameViewController: UIViewController {
 
@@ -24,19 +24,22 @@ class GameViewController: UIViewController {
     //var shuffled_random_sequence = [] as [Int]
     
     var layers = [] as [CAShapeLayer]
-    var teethOffset = 385/userNum*2-10
-    var teethOffset2 = 385/11
-    var x2 = 140.5
+    var teethOffset = 350/userNum*2-10
+    var teethOffset2 = 350/10.5
+    var x2 = 220.0
     //let x3 = x2 + teethOffset
     var x1 = 0.0
     var x3 = 0.0
+    var y1 = 332.5
+    var y2 = 378.5
+    var y3 = 378.5
     //upper teeth position set
-    var xx1 = 168.5
-    var xx2 = 168.5
-    var xx3 = 205.5
-    var yy1 = 183.5
-    var yy2 = 236.5
-    var yy3 = 195.5
+    var xx1 = 268.49
+    var xx2 = 268.49
+    var xx3 = 305.49
+    var yy1 = 214.4
+    var yy2 = 267.4
+    var yy3 = 226.4
     
     
     
@@ -46,21 +49,56 @@ class GameViewController: UIViewController {
         userNum = userNum + 5
         random_sequence = Array(0...userNum-1)
         random_sequence.shuffle()
+        //background Image
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "Playing")
-        backgroundImage.contentMode =  UIView.ContentMode.scaleAspectFill
+        backgroundImage.image = UIImage(named: "playingBackground")
+        backgroundImage.contentMode = .scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
-    //    self.life.sizeToFit()
-      //  life.text = "❤️❤️❤️❤️❤️"
+        
+        //alligator Image - always on the right bottom corner
+        let alligatorImage = UIImageView(frame: UIScreen.main.bounds)
+        alligatorImage.image = UIImage(named: "playingAlligator")
+        alligatorImage.contentMode = .bottomRight
+//        alligatorImage.frame.origin = CGPoint(x: self.view.bounds.width - alligatorImage.frame.width, y: self.view.bounds.height - alligatorImage.frame.height)
+        self.view.addSubview(alligatorImage)
+      
+
+        
+        //get image (alligator's) heigh and width
+        let alligatorImageViewHeight = alligatorImage.image!.size.height
+        let alligatorImageViewWidth: CGFloat = alligatorImage.image!.size.width
+        let screenHeight = UIScreen.main.bounds.height
+        let screenWidth = UIScreen.main.bounds.width
+        let mathForTeethPosition1 = screenHeight - alligatorImageViewHeight
+        let mathForTeethPosition2 = screenWidth - alligatorImageViewWidth
+        
+        x2 = 124.0 + Double(mathForTeethPosition2)
+        y2 = Double(screenHeight) - 35.5
+        y3 = y2
+        y1 = y2 - 46.0
+        
+        xx1 = 172.49 + Double(mathForTeethPosition2)
+        yy1 = Double(screenHeight) - 199.6
+        xx2 = xx1
+        xx3 = xx1 + 37
+        yy2 = yy1 + 53
+        yy3 = yy1 + 12
+
+
+        //  self.life.sizeToFit()
+        //  life.text = "❤️❤️❤️❤️❤️"
         x3 = x2 + Double(teethOffset)
         x1 = x2 + Double(teethOffset)/2
         
         // xx3 = xx2 + Double(teethOffset2)
         //xx1 = xx2 + Double(teethOffset2)/2
         
-        drawTeeth()
+        //math the teeth position
+
         
-        //let randomNum = userNum.random()
+        
+        drawTeeth()
+
         
         //challange: make the layer a string, and append the string?
         for i in 0...userNum-1{
@@ -68,6 +106,13 @@ class GameViewController: UIViewController {
         }
         
         print (randomNum)
+        print(mathForTeethPosition1)
+        print(mathForTeethPosition2)
+        print(xx1,yy1)
+        
+        print(alligatorImageViewHeight,alligatorImageViewWidth)
+        print(screenHeight,screenWidth)
+
         
         
     }
@@ -101,9 +146,9 @@ class GameViewController: UIViewController {
             let temp_yy3 = yy3 + Double(i)*10.3
             
             
-            bezierPath.move(to: CGPoint(x: temp_x1 , y: 328.5))
-            bezierPath.addLine(to: CGPoint(x: temp_x2, y: 374.5))
-            bezierPath.addLine(to: CGPoint(x: temp_x3, y: 374.5))
+            bezierPath.move(to: CGPoint(x: temp_x1 , y: y1))
+            bezierPath.addLine(to: CGPoint(x: temp_x2, y: y2))
+            bezierPath.addLine(to: CGPoint(x: temp_x3, y: y3))
             
             let bezierPath2 = UIBezierPath()
             
