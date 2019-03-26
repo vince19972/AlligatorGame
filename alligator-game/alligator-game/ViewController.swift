@@ -12,6 +12,7 @@
 
 //need to do:
 //6. add a function of - text view of user names  7.make a function of generate teeth.  8. UI saparete layers
+// delegate -  user touch ban!    change UI set
 
 
 import UIKit
