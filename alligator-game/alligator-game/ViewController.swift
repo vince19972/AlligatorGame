@@ -32,17 +32,20 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
     //
     // keep track of present view type
     enum childViewType: String {
-        case entry = "entryView"
-        case staging = "stagingView"
-        case game = "gameView"
+        case entry = "EntryView"
+        case staging = "StagingView"
+        case game = "GameView"
+        case survive = "SurviveView"
+        case dead = "DeadView"
     }
-    var presentView: String = childViewType.entry.rawValue
+    var presentView: childViewType = childViewType.entry
     
     // instantiate child views
     let entryViewController = EntryViewController()
     let stagingViewController = StagingViewController()
     let gameViewController = GameViewController()
-    
+    let surviveViewController = SurviveViewController()
+    let deadViewController = DeadViewController()
     
     //
     /*-- MARK: class variables --*/
@@ -50,7 +53,10 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
     weak var nameInput: UITextField!
     var multipeerService: MultipeerService?
     
-    
+
+    //
+    /*-- MARK: viewDidLoad --*/
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -118,29 +124,30 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
     /*-- MARK: VireController helper functions --*/
     //
     func updatePresentChildViewTarget(_ viewType: childViewType) {
-        self.presentView = viewType.rawValue
+        self.presentView = viewType
         
-        switch self.presentView {
-            case childViewType.entry.rawValue:
-                stagingViewController.remove()
-                gameViewController.remove()
+        switch viewType {
+            case childViewType.entry:
+                surviveViewController.remove()
+                deadViewController.remove()
                 
                 add(entryViewController)
-            case childViewType.staging.rawValue:
+            case childViewType.staging:
                 entryViewController.remove()
-                gameViewController.remove()
                 
                 add(stagingViewController)
-            case childViewType.game.rawValue:
-                entryViewController.remove()
+            case childViewType.game:
                 stagingViewController.remove()
-                
+            
                 add(gameViewController)
-            default:
-                stagingViewController.remove()
+            case childViewType.dead:
                 gameViewController.remove()
                 
-                add(entryViewController)
+                add(deadViewController)
+            case childViewType.survive:
+                gameViewController.remove()
+                
+                add(surviveViewController)
         }
     }
 
