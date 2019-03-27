@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B1C34BE224C1923000E280D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B1C34BD224C1923000E280D /* Assets.xcassets */; };
 		8A185A872249B5380004D978 /* DeadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A185A862249B5380004D978 /* DeadViewController.swift */; };
 		8A185A892249B5480004D978 /* SurviveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A185A882249B5480004D978 /* SurviveViewController.swift */; };
 		8A39A37E223BA73F002EB93B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39A37D223BA73F002EB93B /* AppDelegate.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B1C34BD224C1923000E280D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../AlligatorGame_Assets_V2/Assets.xcassets; sourceTree = "<group>"; };
 		8A185A862249B5380004D978 /* DeadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadViewController.swift; sourceTree = "<group>"; };
 		8A185A882249B5480004D978 /* SurviveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurviveViewController.swift; sourceTree = "<group>"; };
 		8A39A37A223BA73F002EB93B /* alligator-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "alligator-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +94,7 @@
 			children = (
 				8A39A381223BA73F002EB93B /* Main.storyboard */,
 				8A39A384223BA740002EB93B /* Assets.xcassets */,
+				0B1C34BD224C1923000E280D /* Assets.xcassets */,
 				8A39A386223BA740002EB93B /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
@@ -175,6 +178,7 @@
 			files = (
 				8A39A388223BA740002EB93B /* LaunchScreen.storyboard in Resources */,
 				8A39A385223BA740002EB93B /* Assets.xcassets in Resources */,
+				0B1C34BE224C1923000E280D /* Assets.xcassets in Resources */,
 				8A39A383223BA73F002EB93B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
