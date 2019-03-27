@@ -7,7 +7,7 @@
 //
 
 import UIKit
-var userNum:Int = 20 // the user number will depends on Vince's code, the string of users, and count the string.?
+var userNum:Int = 16 // the user number will depends on Vince's code, the string of users, and count the string.?
 
 class GameViewController: UIViewController {
 
