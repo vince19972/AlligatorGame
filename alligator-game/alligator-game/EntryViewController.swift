@@ -45,56 +45,56 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
         
         // input elements container
         let inputContainer = UIView()
-        self.view.addSubview(inputContainer)
-        inputContainer
-            .translatesAutoresizingMaskIntoConstraints = false
-        inputContainer
-            .centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        inputContainer
-            .centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        inputContainer
-            .heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
-        inputContainer
-            .widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+            self.view.addSubview(inputContainer)
+            inputContainer
+                .translatesAutoresizingMaskIntoConstraints = false
+            inputContainer
+                .centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+            inputContainer
+                .centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+            inputContainer
+                .heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
+            inputContainer
+                .widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         
         // game title
         let gameTitle = CreateElement.imageAsset("entry_title")
-        inputContainer
-            .addSubview(gameTitle)
-        gameTitle
-            .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
-        gameTitle
-            .topAnchor.constraint(equalTo: inputContainer.topAnchor, constant: 64).isActive = true
-        gameTitle
-            .heightAnchor.constraint(equalToConstant: self.view.frame.height / 4).isActive = true
+            inputContainer
+                .addSubview(gameTitle)
+            gameTitle
+                .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
+            gameTitle
+                .topAnchor.constraint(equalTo: inputContainer.topAnchor, constant: 64).isActive = true
+            gameTitle
+                .heightAnchor.constraint(equalToConstant: self.view.frame.height / 4).isActive = true
         
         
         // name input textField
         nameInput = CreateElement.textField(placehoderText: "type your name")
-        inputContainer
-            .addSubview(nameInput)
-        nameInput
-            .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
-        nameInput
-            .topAnchor.constraint(equalTo: gameTitle.bottomAnchor, constant: 32).isActive = true
-        nameInput
-            .widthAnchor.constraint(equalToConstant: self.view.frame.width / 2).isActive = true
+            inputContainer
+                .addSubview(nameInput)
+            nameInput
+                .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
+            nameInput
+                .topAnchor.constraint(equalTo: gameTitle.bottomAnchor, constant: 32).isActive = true
+            nameInput
+                .widthAnchor.constraint(equalToConstant: self.view.frame.width / 2).isActive = true
         nameInput.delegate = self
         
         // submit button
         submitButton = CreateElement.submitButton(buttonText: "submit", buttonImage: "entry_submit-btn")
-        inputContainer
-            .addSubview(submitButton)
-        submitButton
-            .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
-        submitButton
-            .topAnchor.constraint(equalTo: nameInput.bottomAnchor, constant: 12).isActive = true
-        submitButton
-            .widthAnchor.constraint(equalToConstant: self.view.frame.width / 5).isActive = true
-        submitButton
-            .layer.borderWidth = 0
-        submitButton
-            .addTarget(self, action: #selector(self.submitButtonTapped(_:)), for: .touchUpInside)
+            inputContainer
+                .addSubview(submitButton)
+            submitButton
+                .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
+            submitButton
+                .topAnchor.constraint(equalTo: nameInput.bottomAnchor, constant: 12).isActive = true
+            submitButton
+                .widthAnchor.constraint(equalToConstant: self.view.frame.width / 5).isActive = true
+            submitButton
+                .layer.borderWidth = 0
+            submitButton
+                .addTarget(self, action: #selector(self.submitButtonTapped(_:)), for: .touchUpInside)
     }
     
     //
