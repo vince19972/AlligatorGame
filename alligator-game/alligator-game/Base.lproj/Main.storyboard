@@ -18,10 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="deadBackground" translatesAutoresizingMaskIntoConstraints="NO" id="gHd-ec-8nl">
-                                <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="deadAlligator3" translatesAutoresizingMaskIntoConstraints="NO" id="AJz-dh-Qw7">
                                 <rect key="frame" x="109" y="5" width="703" height="375"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -50,7 +46,6 @@
                     </view>
                     <connections>
                         <outlet property="deadAlligator" destination="AJz-dh-Qw7" id="7xc-iM-wpr"/>
-                        <outlet property="deadBackground" destination="gHd-ec-8nl" id="HIL-7s-GJx"/>
                         <outlet property="deadSign" destination="8o4-GA-KLr" id="N7K-YU-B7n"/>
                         <outlet property="deadblood" destination="XvJ-Oc-Zkp" id="Hrb-zg-YMj"/>
                         <outlet property="exitButton" destination="rPO-Vx-WvO" id="Phh-i7-w4g"/>
@@ -89,7 +84,6 @@
     <resources>
         <image name="Survived3" width="1631" height="757"/>
         <image name="deadAlligator3" width="1624" height="766"/>
-        <image name="deadBackground" width="1631" height="757"/>
         <image name="deadBlood" width="952" height="140"/>
         <image name="deadSign" width="379" height="123"/>
         <image name="exitButton" width="268" height="106"/>
