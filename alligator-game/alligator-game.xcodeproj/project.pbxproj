@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B1C34B8224BEBB6000E280D /* deadsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B1C34B7224BEBB6000E280D /* deadsound.mp3 */; };
 		8A39A37E223BA73F002EB93B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39A37D223BA73F002EB93B /* AppDelegate.swift */; };
 		8A39A380223BA73F002EB93B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39A37F223BA73F002EB93B /* ViewController.swift */; };
 		8A39A383223BA73F002EB93B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A39A381223BA73F002EB93B /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B1C34B7224BEBB6000E280D /* deadsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = deadsound.mp3; sourceTree = "<group>"; };
 		8A39A37A223BA73F002EB93B /* alligator-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "alligator-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A39A37D223BA73F002EB93B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A39A37F223BA73F002EB93B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				8A39A37F223BA73F002EB93B /* ViewController.swift */,
 				8A39A381223BA73F002EB93B /* Main.storyboard */,
 				8A39A384223BA740002EB93B /* Assets.xcassets */,
+				0B1C34B7224BEBB6000E280D /* deadsound.mp3 */,
 				8A39A386223BA740002EB93B /* LaunchScreen.storyboard */,
 				8A39A389223BA740002EB93B /* Info.plist */,
 			);
@@ -124,6 +127,7 @@
 			files = (
 				8A39A388223BA740002EB93B /* LaunchScreen.storyboard in Resources */,
 				8A39A385223BA740002EB93B /* Assets.xcassets in Resources */,
+				0B1C34B8224BEBB6000E280D /* deadsound.mp3 in Resources */,
 				8A39A383223BA73F002EB93B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
