@@ -22,7 +22,6 @@ class StagingViewController: UIViewController {
     //
     /*-- MARK: class variables --*/
     //
-    var connectedNumber = 0
     weak var startButton: UIButton!
     
     // delegate
@@ -121,10 +120,11 @@ class StagingViewController: UIViewController {
     //
     func updateConnectedNumber(_ connectedNumber: Int) {
         // update number
-        self.connectedNumber = self.stagingBarViewController.updateConnectedNumber(connectedNumber)
+        ConnectedNumber = self.stagingBarViewController.updateConnectedNumber(connectedNumber)
         
         // enable startButton if connected number reached threshold
-        self.startButton.isEnabled = self.connectedNumber >= MinimumPlayerNumber
+        self.startButton.isEnabled = ConnectedNumber >= MinimumPlayerNumber
+
     }
 
 }

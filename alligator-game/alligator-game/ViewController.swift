@@ -23,10 +23,12 @@ import UIKit
 //
 let ServiceType = "alligator-game"
 let MinimumPlayerNumber = 5
+var ConnectedNumber = 0
 let GAME_IS_STARTED = "GAME_STARTED"
 
 
-class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDelegate, EntryViewDelegate, StagingViewDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDelegate, EntryViewDelegate, StagingViewDelegate, GameViewDelegate {
+    
     
     
     //
@@ -65,6 +67,7 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
         // child view settings
         entryViewController.delegate = self
         stagingViewController.delegate = self
+        gameViewController.delegate = self
         updatePresentChildViewTarget(childViewType.entry)
         
         /* REFERENCE CREDIT - (2) */
@@ -127,6 +130,19 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
         // in order to trigger connected devices' child view as well.
         updatePresentChildViewTarget(childViewType.game)
         self.multipeerService?.send(msg: GAME_IS_STARTED)
+    }
+    
+    // GmaeViewDelegate protocols
+    func updateDeath() {
+        updatePresentChildViewTarget(childViewType.dead)
+        print("🧐🧐🧐🧐🧐🧐")
+        //self.multipeerService?.send(msg: USERDEAD)
+    }
+    
+    func updateSurvive() {
+        updatePresentChildViewTarget(childViewType.survive)
+        print("‼️‼️‼️‼️‼️‼️")
+        //self.multipeerService?.send(msg: USERSURVIVE)
     }
     
     

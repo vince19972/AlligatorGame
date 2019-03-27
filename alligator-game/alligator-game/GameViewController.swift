@@ -9,15 +9,33 @@
 import UIKit
 var userNum:Int = 16 // the user number will depends on Vince's code, the string of users, and count the string.?
 
-class GameViewController: UIViewController {
+//
+/*-- MARK: delegate protocol --*/
+//
+protocol GameViewDelegate: class {
+    func updateDeath()
+    func updateSurvive()
+    
+}
 
-    //@IBOutlet weak var life: UITextField!
+
+class GameViewController: UIViewController {
+    
+  //  var connectedNumber = 0
     var count = 0
     var deathCount = 0
     var notdiedCount = 0
     var death = false
     //life view test, will replace with Anna's UI file
-    let items = ["❤️❤️❤️❤️","❤️❤️❤️","❤️❤️","❤️"," "]
+    
+
+    // delegate
+    weak var delegate: GameViewDelegate?
+    
+ 
+
+
+    //let items = ["❤️❤️❤️❤️","❤️❤️❤️","❤️❤️","❤️"," "]
     // var userNum:Int = 2
     let randomNum = Int(arc4random_uniform(UInt32(userNum)))
     var random_sequence = [] as [Int]
@@ -46,7 +64,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userNum = userNum + 5
+        userNum = ConnectedNumber + 5
         random_sequence = Array(0...userNum-1)
         random_sequence.shuffle()
         //background Image
@@ -61,6 +79,16 @@ class GameViewController: UIViewController {
         alligatorImage.contentMode = .bottomRight
 //        alligatorImage.frame.origin = CGPoint(x: self.view.bounds.width - alligatorImage.frame.width, y: self.view.bounds.height - alligatorImage.frame.height)
         self.view.addSubview(alligatorImage)
+        
+        
+        let life = UIImageView(frame:CGRect(x:10, y:50, width:500, height:300))
+        life.image = UIImage(named:"LifeIcon")
+        self.view.addSubview(life)
+        life.translatesAutoresizingMaskIntoConstraints = true
+        life.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
+        life.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
+        
+    
       
 
         
@@ -121,13 +149,9 @@ class GameViewController: UIViewController {
     
     
     func drawTeeth(){
-        //// Color Declarations
-        //let color = UIColor(red: 0.009, green: 0.304, blue: 0.159, alpha: 0.985)
-        //chenge to white teeth color
-        
-        let color = UIColor.green
-        //  let context = UIGraphicsGetCurrentContext()!
-        
+   
+        let color = UIColor.white
+
         //loop the teeth drawing
         for i:Int in 0...userNum{
             // teeth 1 Bezier Drawing
@@ -180,24 +204,13 @@ class GameViewController: UIViewController {
             layer2.strokeColor = UIColor.clear.cgColor
             layers.append(layer2)
             
-            
         }
-        
-        //draw upper teeth
-        
-        
-        
-        
-        
     }
-    
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         let point = touch!.location(in: self.view)
-        //let layers = [layer, layer2, layer3]
-        
+
         
         //teeth touch
         for i in 0...4 {
@@ -215,6 +228,7 @@ class GameViewController: UIViewController {
             }
             
         }
+        
         for i in 5...userNum-1 {
             let l = layers[random_sequence[i]]
             if l.path!.contains(point) {
@@ -223,7 +237,6 @@ class GameViewController: UIViewController {
                 if (l.fillColor == UIColor.black.cgColor) {
                     //donothing
                 }else{
-                //l.isHidden = true
                 //print ("ok")
                 }
                  death = false
@@ -240,29 +253,36 @@ class GameViewController: UIViewController {
                 deathCount = deathCount + 1
                 
                 if deathCount == 5 {
-                    print ("died")
-
                     //then go to next view
-
+                    /*-- MARK: helper functions --*/
+                    //
+                    func updateDeath() {
+                          print ("died")
+                        // function is delegated in ViewController
+                        self.delegate?.updateDeath()
+                        
+                    }
+                     updateDeath()
                 }
             }
-            
-            
         }
         
         //not died to change view
         if death == false{
             notdiedCount = notdiedCount + 1
             if notdiedCount == userNum - 5{
-               print("survived!!!")
-                
-                //then go to next view
-                
+                /*-- MARK: helper functions --*/
+                //
+                func updateSurvive() {
+                    print("survived!!!")
+                    // function is delegated in ViewController
+                    self.delegate?.updateSurvive()
+                    
+                }
+                 updateSurvive()
             }
         }
     }
-
-    
 
 }
 
