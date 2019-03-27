@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0B1C34B8224BEBB6000E280D /* deadsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B1C34B7224BEBB6000E280D /* deadsound.mp3 */; };
+		0B1C34BA224C07BC000E280D /* SurivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C34B9224C07BC000E280D /* SurivedViewController.swift */; };
+		0B1C34BC224C0B4F000E280D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B1C34BB224C0B4F000E280D /* Assets.xcassets */; };
 		8A39A37E223BA73F002EB93B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39A37D223BA73F002EB93B /* AppDelegate.swift */; };
 		8A39A380223BA73F002EB93B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39A37F223BA73F002EB93B /* ViewController.swift */; };
 		8A39A383223BA73F002EB93B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A39A381223BA73F002EB93B /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 
 /* Begin PBXFileReference section */
 		0B1C34B7224BEBB6000E280D /* deadsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = deadsound.mp3; sourceTree = "<group>"; };
+		0B1C34B9224C07BC000E280D /* SurivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurivedViewController.swift; sourceTree = "<group>"; };
+		0B1C34BB224C0B4F000E280D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../AlligatorGame_Assets_V2/Assets.xcassets; sourceTree = "<group>"; };
 		8A39A37A223BA73F002EB93B /* alligator-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "alligator-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A39A37D223BA73F002EB93B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A39A37F223BA73F002EB93B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,7 +63,9 @@
 				8A39A37D223BA73F002EB93B /* AppDelegate.swift */,
 				8A39A37F223BA73F002EB93B /* ViewController.swift */,
 				8A39A381223BA73F002EB93B /* Main.storyboard */,
+				0B1C34B9224C07BC000E280D /* SurivedViewController.swift */,
 				8A39A384223BA740002EB93B /* Assets.xcassets */,
+				0B1C34BB224C0B4F000E280D /* Assets.xcassets */,
 				0B1C34B7224BEBB6000E280D /* deadsound.mp3 */,
 				8A39A386223BA740002EB93B /* LaunchScreen.storyboard */,
 				8A39A389223BA740002EB93B /* Info.plist */,
@@ -129,6 +135,7 @@
 				8A39A385223BA740002EB93B /* Assets.xcassets in Resources */,
 				0B1C34B8224BEBB6000E280D /* deadsound.mp3 in Resources */,
 				8A39A383223BA73F002EB93B /* Main.storyboard in Resources */,
+				0B1C34BC224C0B4F000E280D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A39A380223BA73F002EB93B /* ViewController.swift in Sources */,
+				0B1C34BA224C07BC000E280D /* SurivedViewController.swift in Sources */,
 				8A39A37E223BA73F002EB93B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,7 +295,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7E4FRN2QG2;
+				DEVELOPMENT_TEAM = JSN3V78FHW;
 				INFOPLIST_FILE = "alligator-game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -305,7 +313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7E4FRN2QG2;
+				DEVELOPMENT_TEAM = JSN3V78FHW;
 				INFOPLIST_FILE = "alligator-game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
