@@ -20,6 +20,7 @@
 		8AD81B1B2242707800FFC27D /* MultipeerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD81B1A2242707800FFC27D /* MultipeerService.swift */; };
 		8AD81B202242738A00FFC27D /* ElementCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD81B1F2242738A00FFC27D /* ElementCreation.swift */; };
 		8AD81B242242B93100FFC27D /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD81B232242B93100FFC27D /* AlertMessage.swift */; };
+		8AE47C5C224AED2200E19FDC /* StagingBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE47C5B224AED2200E19FDC /* StagingBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		8AD81B1A2242707800FFC27D /* MultipeerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerService.swift; sourceTree = "<group>"; };
 		8AD81B1F2242738A00FFC27D /* ElementCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCreation.swift; sourceTree = "<group>"; };
 		8AD81B232242B93100FFC27D /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
+		8AE47C5B224AED2200E19FDC /* StagingBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagingBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				8A185A862249B5380004D978 /* DeadViewController.swift */,
 				8A185A882249B5480004D978 /* SurviveViewController.swift */,
 				8A39A389223BA740002EB93B /* Info.plist */,
+				8AE47C5A224AECFF00E19FDC /* SubViews */,
 				8AD81B1C2242721A00FFC27D /* Helpers */,
 				8AD81B192241D11000FFC27D /* Resources */,
 			);
@@ -102,6 +105,14 @@
 				8AD81B232242B93100FFC27D /* AlertMessage.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8AE47C5A224AECFF00E19FDC /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				8AE47C5B224AED2200E19FDC /* StagingBarViewController.swift */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 				8AD81B242242B93100FFC27D /* AlertMessage.swift in Sources */,
 				8A185A872249B5380004D978 /* DeadViewController.swift in Sources */,
 				8AD81B1B2242707800FFC27D /* MultipeerService.swift in Sources */,
+				8AE47C5C224AED2200E19FDC /* StagingBarViewController.swift in Sources */,
 				8AD81B202242738A00FFC27D /* ElementCreation.swift in Sources */,
 				8AD503A822431FA1005EC57E /* GameViewController.swift in Sources */,
 				8AD503A42242C8C2005EC57E /* StagingViewController.swift in Sources */,
