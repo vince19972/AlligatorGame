@@ -23,11 +23,13 @@ class StagingViewController: UIViewController {
     /*-- MARK: class variables --*/
     //
     var connectedNumber = 0
-    let connectedNumberLabel = UILabel()
     weak var startButton: UIButton!
     
     // delegate
     var delegate: StagingViewDelegate?
+    
+    // instantiate child views
+    let stagingBarViewController = StagingBarViewController()
     
 
     override func viewDidLoad() {
@@ -38,33 +40,66 @@ class StagingViewController: UIViewController {
         //
         let CreateElement = ElementCreation()
         
-        // number label
-        self.view.addSubview(connectedNumberLabel)
-            connectedNumberLabel
+        // background image
+        let backgroundImage = CreateElement.backgroundImage("staging_background")
+            self.view.addSubview(backgroundImage)
+        
+        // top container
+        let topContainer = UIView()
+            self.view.addSubview(topContainer)
+            topContainer
                 .translatesAutoresizingMaskIntoConstraints = false
-            connectedNumberLabel
-                .text = String(self.connectedNumber)
-            connectedNumberLabel
-                .centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-            connectedNumberLabel
+            topContainer
                 .centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+            topContainer
+                .topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+            topContainer
+                .heightAnchor.constraint(equalToConstant: self.view.frame.height * 0.8).isActive = true
+            topContainer
+                .widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        
+        // alligator
+        let alligator = CreateElement.imageAsset("staging_alligator")
+            topContainer
+                .addSubview(alligator)
+            alligator
+                .centerXAnchor.constraint(equalTo: topContainer.centerXAnchor).isActive = true
+            alligator
+                .bottomAnchor.constraint(equalTo: topContainer.bottomAnchor).isActive = true
+            alligator
+                .heightAnchor.constraint(equalToConstant: self.view.frame.height * 0.3).isActive = true
         
         // submit button
-        startButton = CreateElement.submitButton(buttonText: "start")
-            self.view.addSubview(startButton)
+        startButton = CreateElement.submitButton(buttonText: "start", buttonImage: "staging_start-btn")
+            topContainer.addSubview(startButton)
             startButton
                 .centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
             startButton
-                .topAnchor.constraint(
-                    equalTo: connectedNumberLabel.bottomAnchor,
-                    constant: 12
-                ).isActive = true
+                .bottomAnchor.constraint(equalTo: alligator.topAnchor, constant: -24).isActive = true
+            startButton
+                .heightAnchor.constraint(equalToConstant: self.view.frame.height * 0.1).isActive = true
             startButton
                 .layer.borderWidth = 0
             startButton
                 .isEnabled = false
             startButton
                 .addTarget(self, action: #selector(self.startButtonTapped(_:)), for: .touchUpInside)
+        
+        // bottom bar
+        addChild(stagingBarViewController)
+            self.view.addSubview(stagingBarViewController.view)
+            stagingBarViewController
+                .didMove(toParent: self)
+            stagingBarViewController
+                .view.translatesAutoresizingMaskIntoConstraints = false
+            stagingBarViewController
+                .view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            stagingBarViewController
+                .view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+            stagingBarViewController
+                .view.heightAnchor.constraint(equalToConstant: self.view.frame.height * 0.2).isActive = true
+            stagingBarViewController
+                .view.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
     }
     
     
@@ -86,8 +121,7 @@ class StagingViewController: UIViewController {
     //
     func updateConnectedNumber(_ connectedNumber: Int) {
         // update number
-        self.connectedNumber += connectedNumber
-        self.connectedNumberLabel.text = String(self.connectedNumber)
+        self.connectedNumber = self.stagingBarViewController.updateConnectedNumber(connectedNumber)
         
         // enable startButton if connected number reached threshold
         self.startButton.isEnabled = self.connectedNumber >= MinimumPlayerNumber

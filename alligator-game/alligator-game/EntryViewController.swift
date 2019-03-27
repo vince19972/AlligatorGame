@@ -22,8 +22,10 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
     //
     /*-- MARK: class variables --*/
     //
+    
     // subviews
     weak var nameInput: UITextField!
+    weak var submitButton: UIButton!
     
     // delegate
     var delegate: EntryViewDelegate?
@@ -37,46 +39,62 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
         //
         let CreateElement = ElementCreation()
         
+        // background image
+        let backgroundImage = CreateElement.backgroundImage("entry_background")
+        self.view.addSubview(backgroundImage)
+        
         // input elements container
-        let inputContainer =  UIView()
-        self.view.addSubview(inputContainer)
-        inputContainer
-            .translatesAutoresizingMaskIntoConstraints = false
-        inputContainer
-            .centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        inputContainer
-            .centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        inputContainer
-            .heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
-        inputContainer
-            .widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        let inputContainer = UIView()
+            self.view.addSubview(inputContainer)
+            inputContainer
+                .translatesAutoresizingMaskIntoConstraints = false
+            inputContainer
+                .centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+            inputContainer
+                .centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+            inputContainer
+                .heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
+            inputContainer
+                .widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        
+        // game title
+        let gameTitle = CreateElement.imageAsset("entry_title")
+            inputContainer
+                .addSubview(gameTitle)
+            gameTitle
+                .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
+            gameTitle
+                .topAnchor.constraint(equalTo: inputContainer.topAnchor, constant: 64).isActive = true
+            gameTitle
+                .heightAnchor.constraint(equalToConstant: self.view.frame.height / 4).isActive = true
+        
         
         // name input textField
-        nameInput = CreateElement.textField(placehoderText: "please input your name")
-        inputContainer.addSubview(nameInput)
-        nameInput
-            .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
-        nameInput
-            .centerYAnchor.constraint(
-                equalTo: inputContainer.centerYAnchor,
-                constant: nameInput.frame.size.height / 2
-            ).isActive = true
+        nameInput = CreateElement.textField(placehoderText: "type your name")
+            inputContainer
+                .addSubview(nameInput)
+            nameInput
+                .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
+            nameInput
+                .topAnchor.constraint(equalTo: gameTitle.bottomAnchor, constant: 32).isActive = true
+            nameInput
+                .widthAnchor.constraint(equalToConstant: self.view.frame.width / 2).isActive = true
         nameInput.delegate = self
         
         // submit button
-        let submitButton = CreateElement.submitButton(buttonText: "submit")
-        inputContainer.addSubview(submitButton)
-        submitButton
-            .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
-        submitButton
-            .topAnchor.constraint(
-                equalTo: nameInput.bottomAnchor,
-                constant: 12
-            ).isActive = true
-        submitButton
-            .layer.borderWidth = 0
-        submitButton
-            .addTarget(self, action: #selector(self.submitButtonTapped(_:)), for: .touchUpInside)
+        submitButton = CreateElement.submitButton(buttonText: "submit", buttonImage: "entry_submit-btn")
+            inputContainer
+                .addSubview(submitButton)
+            submitButton
+                .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
+            submitButton
+                .topAnchor.constraint(equalTo: nameInput.bottomAnchor, constant: 12).isActive = true
+            submitButton
+                .widthAnchor.constraint(equalToConstant: self.view.frame.width / 5).isActive = true
+            submitButton
+                .layer.borderWidth = 0
+            submitButton
+                .addTarget(self, action: #selector(self.submitButtonTapped(_:)), for: .touchUpInside)
     }
     
     //
@@ -98,6 +116,29 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
         
         return false
+    }
+    
+    func highlightNameField(toHighlight: Bool = true, keyboardHeight: CGFloat = 0) {
+        
+        if toHighlight {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.submitButton.isHidden = true
+                self.nameInput.transform = self.nameInput.transform.translatedBy(x: 0, y: keyboardHeight / 2)
+            }, completion: { _ in
+                UIView.animate(withDuration: 0, animations: {
+                    self.submitButton.alpha = 0
+                })
+            })
+        } else {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.nameInput.transform = CGAffineTransform.identity
+                self.submitButton.alpha = 1
+            }, completion: { _ in
+                UIView.animate(withDuration: 0, animations: {
+                    self.submitButton.isHidden = false
+                })
+            })
+        }
     }
 
 }
