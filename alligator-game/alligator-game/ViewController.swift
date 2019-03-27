@@ -11,10 +11,45 @@ import AVFoundation
 
 class ViewController: UIViewController {
     //background Image
-    let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-    backgroundImage.image = UIImage(named: "deadBackground")
-    backgroundImage.contentMode = .scaleAspectFill
-    self.view.insertSubview(backgroundImage, at: 0)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        //background Image
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "deadBackground")
+        backgroundImage.contentMode = .scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
+        
+        //Deadsign
+        let deadsignImage = UIImageView(frame: UIScreen.main.bounds)
+        deadsignImage.image = UIImage(named: "deadSign")
+        deadsignImage.contentMode = .scaleAspectFill
+        self.view.addSubview(deadsignImage)
+        
+        //alligator Image - always on the right bottom corner
+        let alligatorImage = UIImageView(frame: UIScreen.main.bounds)
+        alligatorImage.image = UIImage(named: "deadAlligator")
+        alligatorImage.contentMode = .bottomRight
+        self.view.addSubview(alligatorImage)
+        
+        
+        //get image (alligator's) heigh and width
+        let alligatorImageViewHeight = alligatorImage.image!.size.height
+        let alligatorImageViewWidth: CGFloat = alligatorImage.image!.size.width
+        let screenHeight = UIScreen.main.bounds.height
+        let screenWidth = UIScreen.main.bounds.width
+        
+//        //get image (alligator's) heigh and width
+//        let alligatorImageViewHeight = alligatorImage.image!.size.height
+//        let alligatorImageViewWidth: CGFloat = alligatorImage.image!.size.width
+//        let screenHeight = UIScreen.main.bounds.height
+//        let screenWidth = UIScreen.main.bounds.width
+
+//    let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+//    backgroundImage.image = UIImage(named: "deadBackground")
+//    backgroundImage.contentMode = .scaleAspectFill
+//    self.view.insertSubview(backgroundImage, at: 0)
     
 //    @IBOutlet weak var deadBackground: UIImageView!
 //    @IBOutlet weak var deadAlligator: UIImageView!
@@ -25,10 +60,6 @@ class ViewController: UIViewController {
 //    var player: AVAudioPlayer?
 //
 //
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
 //    // Make the device vibrate.
 //    func generateImpactFeedback() {
 //        let generator = UIImpactFeedbackGenerator(style: .heavy)
@@ -60,4 +91,5 @@ class ViewController: UIViewController {
 //}
 ////
 //
+}
 }
