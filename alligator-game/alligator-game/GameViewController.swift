@@ -21,8 +21,9 @@ protocol GameViewDelegate: class {
 
 class GameViewController: UIViewController {
     
-  //  var connectedNumber = 0
     var count = 0
+    var innerCount = 0
+    var innerCount2 = 0
     var deathCount = 0
     var notdiedCount = 0
     var death = false
@@ -32,16 +33,18 @@ class GameViewController: UIViewController {
     // delegate
     weak var delegate: GameViewDelegate?
     
- 
+     var random_sequence = [] as [Int]
 
-
-    //let items = ["❤️❤️❤️❤️","❤️❤️❤️","❤️❤️","❤️"," "]
-    // var userNum:Int = 2
-    let randomNum = Int(arc4random_uniform(UInt32(userNum)))
-    var random_sequence = [] as [Int]
-    //var shuffled_random_sequence = [] as [Int]
     
     var layers = [] as [CAShapeLayer]
+    //let lifes = [] as [UIImageView]
+    let life = UIImageView(frame: CGRect(x:10 + 30, y:100, width:30, height:20))
+    let life2 = UIImageView(frame: CGRect(x:10 + 60, y:100, width:30, height:20))
+    let life3 = UIImageView(frame: CGRect(x:10 + 90, y:100, width:30, height:20))
+    let life4 = UIImageView(frame: CGRect(x:10 + 120, y:100, width:30, height:20))
+    let life5 = UIImageView(frame: CGRect(x:10 + 150, y:100, width:30, height:20))
+
+    
     var teethOffset = 350/userNum*2-10
     var teethOffset2 = 350/10.5
     var x2 = 220.0
@@ -59,8 +62,7 @@ class GameViewController: UIViewController {
     var yy2 = 267.4
     var yy3 = 226.4
     
-    
-    
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,21 +79,11 @@ class GameViewController: UIViewController {
         let alligatorImage = UIImageView(frame: UIScreen.main.bounds)
         alligatorImage.image = UIImage(named: "playingAlligator")
         alligatorImage.contentMode = .bottomRight
-//        alligatorImage.frame.origin = CGPoint(x: self.view.bounds.width - alligatorImage.frame.width, y: self.view.bounds.height - alligatorImage.frame.height)
         self.view.addSubview(alligatorImage)
+        showLife()
         
-        
-        let life = UIImageView(frame:CGRect(x:10, y:50, width:500, height:300))
-        life.image = UIImage(named:"LifeIcon")
-        self.view.addSubview(life)
-        life.translatesAutoresizingMaskIntoConstraints = true
-        life.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
-        life.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
-        
-    
-      
 
-        
+
         //get image (alligator's) heigh and width
         let alligatorImageViewHeight = alligatorImage.image!.size.height
         let alligatorImageViewWidth: CGFloat = alligatorImage.image!.size.width
@@ -133,7 +125,6 @@ class GameViewController: UIViewController {
             self.view.layer.addSublayer(layers[i])
         }
         
-        print (randomNum)
         print(mathForTeethPosition1)
         print(mathForTeethPosition2)
         print(xx1,yy1)
@@ -141,8 +132,7 @@ class GameViewController: UIViewController {
         print(alligatorImageViewHeight,alligatorImageViewWidth)
         print(screenHeight,screenWidth)
 
-        
-        
+
     }
     
     
@@ -206,10 +196,51 @@ class GameViewController: UIViewController {
             
         }
     }
+
+    
+        
+    func showLife(){
+        
+        //life 1
+        life.image = UIImage(named:"LifeIcon")
+        self.view.addSubview(life)
+        life.translatesAutoresizingMaskIntoConstraints = true
+        life.center = CGPoint(x: view.bounds.width/7, y: view.bounds.height/7)
+        life.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
+
+        //life 2
+        life2.image = UIImage(named:"LifeIcon")
+        self.view.addSubview(life2)
+        life2.translatesAutoresizingMaskIntoConstraints = true
+        life2.center = CGPoint(x: (view.bounds.width/7)+40, y: view.bounds.height/7)
+        life2.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
+
+        //life 3
+        life3.image = UIImage(named:"LifeIcon")
+        self.view.addSubview(life3)
+        life3.translatesAutoresizingMaskIntoConstraints = true
+        life3.center = CGPoint(x: (view.bounds.width/7)+80, y: view.bounds.height/7)
+        life3.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
+        //life 4
+        life4.image = UIImage(named:"LifeIcon")
+        self.view.addSubview(life4)
+        life4.translatesAutoresizingMaskIntoConstraints = true
+        life4.center = CGPoint(x: (view.bounds.width/7)+120, y: view.bounds.height/7)
+        life4.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
+        //life 4
+        life5.image = UIImage(named:"LifeIcon")
+        self.view.addSubview(life5)
+        life5.translatesAutoresizingMaskIntoConstraints = true
+        life5.center = CGPoint(x: (view.bounds.width/7)+160, y: view.bounds.height/7)
+        life5.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
+    
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         let point = touch!.location(in: self.view)
+        count = innerCount2 + innerCount + 1
+        print(count)
 
         
         //teeth touch
@@ -217,13 +248,14 @@ class GameViewController: UIViewController {
             let l = layers[random_sequence[i]]
             
             if l.path!.contains(point) {
-                
+                innerCount = innerCount + 1
                 if (l.fillColor == UIColor.red.cgColor){
                     death = false
                 }else{
                     l.fillColor = UIColor.red.cgColor
                     print ("bad")
                     death = true
+                    deathCount = deathCount + 1
                 }
             }
             
@@ -232,9 +264,10 @@ class GameViewController: UIViewController {
         for i in 5...userNum-1 {
             let l = layers[random_sequence[i]]
             if l.path!.contains(point) {
-                l.fillColor = UIColor.black.cgColor
+                innerCount2 = innerCount2 + 1
+                l.fillColor = UIColor.gray.cgColor
                 
-                if (l.fillColor == UIColor.black.cgColor) {
+                if (l.fillColor == UIColor.gray.cgColor) {
                     //donothing
                 }else{
                 //print ("ok")
@@ -246,11 +279,28 @@ class GameViewController: UIViewController {
         // died to change view
         
         if death == true {
+            // help... stupid ways to do that
             
-            count = count + 1
-            if count  < 6 {
+            if innerCount == 1 {
+                life5.isHidden = true
+            }
+            if innerCount == 2 {
+                life4.isHidden = true
+            }
+            if innerCount == 3 {
+                life3.isHidden = true
+            }
+            if innerCount == 4 {
+                life2.isHidden = true
+            }
+            if innerCount == 5 {
+                life.isHidden = true
+            }
+            
+            
+            if count < 6 {
             //    life.text = items[count-1]
-                deathCount = deathCount + 1
+              //  deathCount = deathCount + 1
                 
                 if deathCount == 5 {
                     //then go to next view
@@ -267,10 +317,9 @@ class GameViewController: UIViewController {
             }
         }
         
-        //not died to change view
-        if death == false{
-            notdiedCount = notdiedCount + 1
-            if notdiedCount == userNum - 5{
+          //not died to change view
+             if count == userNum - 5{
+            
                 /*-- MARK: helper functions --*/
                 //
                 func updateSurvive() {
@@ -284,10 +333,13 @@ class GameViewController: UIViewController {
         }
     }
 
-}
 
 
 
 
 
+
+
+
+//        alligatorImage.frame.origin = CGPoint(x: self.view.bounds.width - alligatorImage.frame.width, y: self.view.bounds.height - alligatorImage.frame.height)
 
