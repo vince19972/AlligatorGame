@@ -115,41 +115,16 @@ class GameViewController: UIViewController {
         drawTeeth()
         
         
-        // progress bar
-        addControls()
-     
-        
         //challange: make the layer a string, and append the string?
         for i in 0...userNum-1{
             self.view.layer.addSublayer(layers[i])
         }
-//
-//        print(mathForTeethPosition1)
-//        print(mathForTeethPosition2)
-//        print(xx1,yy1)
-//
-//        print(alligatorImageViewHeight,alligatorImageViewWidth)
-//        print(screenHeight,screenWidth)
+
 
     }
     
 
     
-//    func addControls() {
-//        // Create Progress View Control
-//        progressView = UIProgressView(progressViewStyle: UIProgressView.Style.default)
-//        progressView?.center = self.view.center
-//        view.addSubview(progressView!)
-//        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: Selector(("updateProgress")), userInfo: nil, repeats: true)
-//          //progressView?.progress = 0.0
-//        //timer?.invalidate()
-//    }
-//    
-//    func updateProgress() {
-//        progressView?.progress += 0.05
-//     
-//     
-//    }
 
         
     func drawTeeth(){
