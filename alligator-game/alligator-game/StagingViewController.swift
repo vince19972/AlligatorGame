@@ -11,7 +11,7 @@ import UIKit
 //
 /*-- MARK: delegate protocol --*/
 //
-protocol StagingViewDelegate {
+protocol StagingViewDelegate: class {
     
     func startButtonTapped()
     
@@ -25,7 +25,7 @@ class StagingViewController: UIViewController {
     weak var startButton: UIButton!
     
     // delegate
-    var delegate: StagingViewDelegate?
+    weak var delegate: StagingViewDelegate?
     
     // instantiate child views
     let stagingBarViewController = StagingBarViewController()
@@ -79,8 +79,8 @@ class StagingViewController: UIViewController {
                 .heightAnchor.constraint(equalToConstant: self.view.frame.height * 0.1).isActive = true
             startButton
                 .layer.borderWidth = 0
-            startButton
-                .isEnabled = false
+//            startButton
+//                .isEnabled = false
             startButton
                 .addTarget(self, action: #selector(self.startButtonTapped(_:)), for: .touchUpInside)
         
@@ -124,7 +124,6 @@ class StagingViewController: UIViewController {
         
         // enable startButton if connected number reached threshold
         self.startButton.isEnabled = ConnectedNumber >= MinimumPlayerNumber
-
     }
 
 }

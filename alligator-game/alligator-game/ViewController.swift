@@ -22,13 +22,15 @@ import UIKit
 /*-- MARK: global variables --*/
 //
 let ServiceType = "alligator-game"
-let MinimumPlayerNumber = 5
+let MinimumPlayerNumber = 15
 var ConnectedNumber = 0
 let GAME_IS_STARTED = "GAME_STARTED"
+let GAME_IS_OVER = "GAME_OVER"
+let GAME_IS_VICTORY = "GAME_VICTORY"
+var RandomSequence = [] as [Int]
 
 
 class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDelegate, EntryViewDelegate, StagingViewDelegate, GameViewDelegate {
-    
     
     
     //
@@ -56,6 +58,7 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
     //
     weak var nameInput: UITextField!
     var multipeerService: MultipeerService?
+    let TAP_TOOTH = "tapTooth"
     
 
     //
@@ -130,19 +133,20 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
         // in order to trigger connected devices' child view as well.
         updatePresentChildViewTarget(childViewType.game)
         self.multipeerService?.send(msg: GAME_IS_STARTED)
+        generateRandomTeeth()
     }
     
-    // GmaeViewDelegate protocols
+    // GameViewDelegate protocols
     func updateDeath() {
         updatePresentChildViewTarget(childViewType.dead)
-        print("🧐🧐🧐🧐🧐🧐")
-        //self.multipeerService?.send(msg: USERDEAD)
+        self.multipeerService?.send(msg: GAME_IS_OVER)
     }
-    
     func updateSurvive() {
         updatePresentChildViewTarget(childViewType.survive)
-        print("‼️‼️‼️‼️‼️‼️")
-        //self.multipeerService?.send(msg: USERSURVIVE)
+        self.multipeerService?.send(msg: GAME_IS_VICTORY)
+    }
+    func toothTapped(toothNumber: Int, isBadTooth: Bool) {
+        self.multipeerService?.send(msg: "\(TAP_TOOTH):\(String(toothNumber)):\(String(isBadTooth))")
     }
     
     
@@ -158,6 +162,7 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
     func connectedDevicesChanged(manager: MultipeerService, connectedDevices: [String]) {
         DispatchQueue.main.async {
             self.stagingViewController.updateConnectedNumber(manager.session.connectedPeers.count)
+            generateRandomTeeth()
         }
     }
     func receivedMsg(manager: MultipeerService, msg: String) {
@@ -165,6 +170,16 @@ class ViewController: UIViewController, UITextFieldDelegate, MultipeerServiceDel
             // update connected devices' child view
             if msg == GAME_IS_STARTED {
                 self.updatePresentChildViewTarget(childViewType.game)
+            } else if msg == GAME_IS_VICTORY {
+                self.updatePresentChildViewTarget(childViewType.survive)
+            } else if msg == GAME_IS_OVER {
+                self.updatePresentChildViewTarget(childViewType.dead)
+            }
+            
+            if msg.contains(self.TAP_TOOTH) {
+                let msgArr = msg.components(separatedBy: ":")
+                
+                self.gameViewController.updateToothState(toothNumber: Int(msgArr[1])!, isBadTooth: Bool(msgArr[2])!)
             }
         }
     }
@@ -225,4 +240,14 @@ extension UIViewController {
         view.removeFromSuperview()
         removeFromParent()
     }
+}
+
+
+
+//
+/*-- MARK: generate random teeth number --*/
+//
+func generateRandomTeeth() {
+    RandomSequence = Array(0...(ConnectedNumber + 5) - 1)
+    RandomSequence.shuffle()
 }

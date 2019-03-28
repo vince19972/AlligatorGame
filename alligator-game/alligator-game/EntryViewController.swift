@@ -11,7 +11,7 @@ import UIKit
 //
 /*-- MARK: delegate protocol --*/
 //
-protocol EntryViewDelegate {
+protocol EntryViewDelegate: class {
     
     func submitButtonTapped(nameInput: UITextField)
     
@@ -28,7 +28,7 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
     weak var submitButton: UIButton!
     
     // delegate
-    var delegate: EntryViewDelegate?
+    weak var delegate: EntryViewDelegate?
 
     // viewDidLoad
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
         let CreateElement = ElementCreation()
         
         // background image
-        let backgroundImage = CreateElement.backgroundImage("entry_background")
+        let backgroundImage = CreateElement.backgroundImage("entry_background2")
         self.view.addSubview(backgroundImage)
         
         // input elements container
@@ -58,13 +58,13 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
                 .widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         
         // game title
-        let gameTitle = CreateElement.imageAsset("entry_title")
+        let gameTitle = CreateElement.imageAsset("entry_title2")
             inputContainer
                 .addSubview(gameTitle)
             gameTitle
                 .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
             gameTitle
-                .topAnchor.constraint(equalTo: inputContainer.topAnchor, constant: 64).isActive = true
+                .topAnchor.constraint(equalTo: inputContainer.topAnchor, constant: 80).isActive = true
             gameTitle
                 .heightAnchor.constraint(equalToConstant: self.view.frame.height / 4).isActive = true
         
@@ -76,19 +76,19 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
             nameInput
                 .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
             nameInput
-                .topAnchor.constraint(equalTo: gameTitle.bottomAnchor, constant: 32).isActive = true
+                .topAnchor.constraint(equalTo: gameTitle.bottomAnchor, constant: 20).isActive = true
             nameInput
                 .widthAnchor.constraint(equalToConstant: self.view.frame.width / 2).isActive = true
         nameInput.delegate = self
         
         // submit button
-        submitButton = CreateElement.submitButton(buttonText: "submit", buttonImage: "entry_submit-btn")
+        submitButton = CreateElement.submitButton(buttonText: "submit", buttonImage: "entry_submit-btn2")
             inputContainer
                 .addSubview(submitButton)
             submitButton
                 .centerXAnchor.constraint(equalTo: inputContainer.centerXAnchor).isActive = true
             submitButton
-                .topAnchor.constraint(equalTo: nameInput.bottomAnchor, constant: 12).isActive = true
+                .topAnchor.constraint(equalTo: nameInput.bottomAnchor, constant: 2).isActive = true
             submitButton
                 .widthAnchor.constraint(equalToConstant: self.view.frame.width / 5).isActive = true
             submitButton
