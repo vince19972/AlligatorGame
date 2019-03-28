@@ -16,7 +16,7 @@ class StagingBarViewController: UIViewController {
     var connectedNumber = 0
     let connectedNumberLabel = UILabel()
     let progressBar = UIView()
-    let progressPortion: CGFloat = CGFloat(1) / CGFloat(MinimumPlayerNumber)
+    let progressPortion: CGFloat = CGFloat(1) / CGFloat(15)
     var progressBarWidthConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {

@@ -29,6 +29,12 @@ class GameViewController: UIViewController {
     var deathCount = 0
     var notdiedCount = 0
     var death = false
+    @objc var progressBar = UIView()
+    var timer = Timer(timeInterval: 1.5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+    // timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+    @objc func timerAction() {
+        timeCount += 100
+    }
 //    var timer = Timer()
 //    var progressView: UIProgressView?
 
@@ -66,6 +72,13 @@ class GameViewController: UIViewController {
     var yy1 = 214.4
     var yy2 = 267.4
     var yy3 = 226.4
+    
+    var timeCount = 0
+    var timeCountWidth = 300
+
+
+
+
 
 
 
@@ -84,7 +97,7 @@ class GameViewController: UIViewController {
         alligatorImage.contentMode = .bottomRight
         self.view.addSubview(alligatorImage)
         showLife()
-
+        
 
 
         //get image (alligator's) heigh and width
@@ -118,9 +131,39 @@ class GameViewController: UIViewController {
         for i in 0...userNum-1{
             self.view.layer.addSublayer(layers[i])
         }
+        
+
+        timerAction()
+        print(timeCount)
+        timeCountWidth = Int(Float(300) - Float(timeCount))
+        progressBar = UIView(frame: CGRect(x:450, y:100, width:timeCountWidth, height:20))
+        self.view.addSubview(progressBar)
+        if timeCountWidth == 0 {
+            func updateDeath() {
+                print ("died")
+                // function is delegated in ViewControlle
+                self.delegate?.updateDeath()
+            
+            }
+            updateDeath()
+        }
+ 
+        
+        
+        
+ 
+        progressBar
+            .layer.backgroundColor = UIColor(red:0.96, green:0.88, blue:0.28, alpha:1.0).cgColor
+        progressBar
+            .translatesAutoresizingMaskIntoConstraints = true
+        progressBar.center = CGPoint(x: (view.bounds.width/1.4), y: view.bounds.height/7)
+        progressBar.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
+
 
 
     }
+    
+ 
 
 
 

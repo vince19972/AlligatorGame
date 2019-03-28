@@ -22,7 +22,7 @@ import UIKit
 /*-- MARK: global variables --*/
 //
 let ServiceType = "alligator-game"
-let MinimumPlayerNumber = 15
+let MinimumPlayerNumber = 1
 var ConnectedNumber = 0
 let GAME_IS_STARTED = "GAME_STARTED"
 let GAME_IS_OVER = "GAME_OVER"
