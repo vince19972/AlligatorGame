@@ -11,7 +11,7 @@ import UIKit
 //
 /*-- MARK: delegate protocol --*/
 //
-protocol EntryViewDelegate {
+protocol EntryViewDelegate: class {
     
     func submitButtonTapped(nameInput: UITextField)
     
@@ -28,7 +28,7 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
     weak var submitButton: UIButton!
     
     // delegate
-    var delegate: EntryViewDelegate?
+    weak var delegate: EntryViewDelegate?
 
     // viewDidLoad
     override func viewDidLoad() {

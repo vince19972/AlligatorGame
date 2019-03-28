@@ -13,6 +13,8 @@ var userNum:Int = 16 // the user number will depends on Vince's code, the string
 /*-- MARK: delegate protocol --*/
 //
 protocol GameViewDelegate: class {
+    
+    func toothTapped(toothNumber: Int, isBadTooth: Bool)
     func updateDeath()
     func updateSurvive()
     
@@ -21,7 +23,6 @@ protocol GameViewDelegate: class {
 
 class GameViewController: UIViewController {
     
-  //  var connectedNumber = 0
     var count = 0
     var deathCount = 0
     var notdiedCount = 0
@@ -36,10 +37,6 @@ class GameViewController: UIViewController {
 
 
     //let items = ["❤️❤️❤️❤️","❤️❤️❤️","❤️❤️","❤️"," "]
-    // var userNum:Int = 2
-    let randomNum = Int(arc4random_uniform(UInt32(userNum)))
-    var random_sequence = [] as [Int]
-    //var shuffled_random_sequence = [] as [Int]
     
     var layers = [] as [CAShapeLayer]
     var teethOffset = 350/userNum*2-10
@@ -65,8 +62,6 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         userNum = ConnectedNumber + 5
-        random_sequence = Array(0...userNum-1)
-        random_sequence.shuffle()
         //background Image
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "playingBackground")
@@ -77,7 +72,6 @@ class GameViewController: UIViewController {
         let alligatorImage = UIImageView(frame: UIScreen.main.bounds)
         alligatorImage.image = UIImage(named: "playingAlligator")
         alligatorImage.contentMode = .bottomRight
-//        alligatorImage.frame.origin = CGPoint(x: self.view.bounds.width - alligatorImage.frame.width, y: self.view.bounds.height - alligatorImage.frame.height)
         self.view.addSubview(alligatorImage)
         
         
@@ -133,7 +127,7 @@ class GameViewController: UIViewController {
             self.view.layer.addSublayer(layers[i])
         }
         
-        print (randomNum)
+//        print (randomNum)
         print(mathForTeethPosition1)
         print(mathForTeethPosition2)
         print(xx1,yy1)
@@ -207,6 +201,18 @@ class GameViewController: UIViewController {
         }
     }
     
+    func updateToothState(toothNumber: Int, isBadTooth: Bool) {
+        print("🔥")
+        print(toothNumber)
+        if isBadTooth {
+            layers[RandomSequence[toothNumber]].fillColor = UIColor.red.cgColor
+            death = true
+        } else {
+            layers[RandomSequence[toothNumber]].fillColor = UIColor.black.cgColor
+            death = false
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         let point = touch!.location(in: self.view)
@@ -214,7 +220,7 @@ class GameViewController: UIViewController {
         
         //teeth touch
         for i in 0...4 {
-            let l = layers[random_sequence[i]]
+            let l = layers[RandomSequence[i]]
             
             if l.path!.contains(point) {
                 
@@ -224,13 +230,14 @@ class GameViewController: UIViewController {
                     l.fillColor = UIColor.red.cgColor
                     print ("bad")
                     death = true
+                    self.delegate?.toothTapped(toothNumber: i, isBadTooth: true)
                 }
             }
             
         }
         
         for i in 5...userNum-1 {
-            let l = layers[random_sequence[i]]
+            let l = layers[RandomSequence[i]]
             if l.path!.contains(point) {
                 l.fillColor = UIColor.black.cgColor
                 
@@ -239,7 +246,8 @@ class GameViewController: UIViewController {
                 }else{
                 //print ("ok")
                 }
-                 death = false
+                death = false
+                self.delegate?.toothTapped(toothNumber: i, isBadTooth: false)
             }
         }
         
