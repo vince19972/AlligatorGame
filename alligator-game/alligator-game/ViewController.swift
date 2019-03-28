@@ -248,7 +248,6 @@ extension UIViewController {
 /*-- MARK: generate random teeth number --*/
 //
 func generateRandomTeeth() {
-//    RandomSequence = Array(0...(ConnectedNumber + 5) - 1)
     RandomSequence = Array(0...(ConnectedNumber + 5) - 1)
     RandomSequence.shuffle()
 }
