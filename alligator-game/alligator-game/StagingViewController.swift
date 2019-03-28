@@ -124,7 +124,6 @@ class StagingViewController: UIViewController {
         
         // enable startButton if connected number reached threshold
         self.startButton.isEnabled = ConnectedNumber >= MinimumPlayerNumber
-        self.startButton.isEnabled = true
     }
 
 }
