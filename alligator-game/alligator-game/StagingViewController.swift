@@ -79,8 +79,8 @@ class StagingViewController: UIViewController {
                 .heightAnchor.constraint(equalToConstant: self.view.frame.height * 0.1).isActive = true
             startButton
                 .layer.borderWidth = 0
-            startButton
-                .isEnabled = false
+//            startButton
+//                .isEnabled = false
             startButton
                 .addTarget(self, action: #selector(self.startButtonTapped(_:)), for: .touchUpInside)
         

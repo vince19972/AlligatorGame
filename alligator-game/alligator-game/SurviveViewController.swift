@@ -12,7 +12,13 @@ class SurviveViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+     
+            //background Image
+            let surviveBackgroundImage = UIImageView(frame: UIScreen.main.bounds)
+            surviveBackgroundImage.image = UIImage(named: "Survive")
+            surviveBackgroundImage.contentMode = .scaleAspectFill
+            self.view.insertSubview(surviveBackgroundImage, at: 0)
+            
         // Do any additional setup after loading the view.
     }
     
