@@ -9,87 +9,44 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController {
+//
+/*-- MARK: delegate protocol --*/
+//
+//protocol GameViewDelegate: class {
+//    func TryagainButtonTapped()
+//    func ExitButtonTapped()
+//
+    class ViewController: UIViewController {
     //background Image
+//            weak var tryAgainButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
+        override func viewDidLoad() {
+            super.viewDidLoad()
+//            let CreateElement = ElementCreation()
+            
         //background Image
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "deadBackground")
-        backgroundImage.contentMode = .scaleAspectFill
-        self.view.insertSubview(backgroundImage, at: 0)
+        let deadbackgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        deadbackgroundImage.image = UIImage(named: "deadBackground")
+        deadbackgroundImage.contentMode = .scaleAspectFill
+        self.view.insertSubview(deadbackgroundImage, at: 0)
         
         //Deadsign
-        let deadsignImage = UIImageView(frame: UIScreen.main.bounds)
+        let deadsignImage = UIImageView(frame: CGRect(x: (view.bounds.width/2), y: view.bounds.height/3, width: 180, height: 67))
         deadsignImage.image = UIImage(named: "deadSign")
-        deadsignImage.contentMode = .scaleAspectFill
         self.view.addSubview(deadsignImage)
-        
-        //alligator Image - always on the right bottom corner
-        let alligatorImage = UIImageView(frame: UIScreen.main.bounds)
-        alligatorImage.image = UIImage(named: "deadAlligator")
-        alligatorImage.contentMode = .bottomRight
-        self.view.addSubview(alligatorImage)
-        
-        
-        //get image (alligator's) heigh and width
-        let alligatorImageViewHeight = alligatorImage.image!.size.height
-        let alligatorImageViewWidth: CGFloat = alligatorImage.image!.size.width
-        let screenHeight = UIScreen.main.bounds.height
-        let screenWidth = UIScreen.main.bounds.width
-        
-//        //get image (alligator's) heigh and width
-//        let alligatorImageViewHeight = alligatorImage.image!.size.height
-//        let alligatorImageViewWidth: CGFloat = alligatorImage.image!.size.width
-//        let screenHeight = UIScreen.main.bounds.height
-//        let screenWidth = UIScreen.main.bounds.width
+       deadsignImage.translatesAutoresizingMaskIntoConstraints = true
+        deadsignImage.center = CGPoint(x: (view.bounds.width/2), y: view.bounds.height/3-30)
+        deadsignImage.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
 
-//    let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-//    backgroundImage.image = UIImage(named: "deadBackground")
-//    backgroundImage.contentMode = .scaleAspectFill
-//    self.view.insertSubview(backgroundImage, at: 0)
-    
-//    @IBOutlet weak var deadBackground: UIImageView!
-//    @IBOutlet weak var deadAlligator: UIImageView!
-//    @IBOutlet weak var deadSign: UIImageView!
-//    @IBOutlet weak var tryagainButton: UIButton!
-//    @IBOutlet weak var exitButton: UIButton!
-//    @IBOutlet weak var deadblood: UIImageView!
-//    var player: AVAudioPlayer?
-//
-//
-//    // Make the device vibrate.
-//    func generateImpactFeedback() {
-//        let generator = UIImpactFeedbackGenerator(style: .heavy)
-//        generator.impactOccurred()
-//    }
-//
-//    // Play a mp3 sound file.
-//    func playSoundMP3(filename: String) {
-//        guard let url = Bundle.main.url(forResource: filename, withExtension: "mp3") else { return }
-//
-//        do {
-//            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.playback)), mode: .default)
-//            try AVAudioSession.sharedInstance().setActive(true)
-//
-//            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-//
-//            guard let player = player else { return }
-//            player.play()
-//        } catch let error {
-//            print(error.localizedDescription)
-//        }
-//    }
-//}
-//
-//
-//// Helper function inserted by Swift 4.2 migrator.
-//fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
-//    return input.rawValue
-//}
-////
-//
+            //deadAlligator
+            let deadalligatorImage = UIImageView(frame: CGRect(x: (view.bounds.width/2), y: view.bounds.height/3, width: 770, height: 400))
+            deadalligatorImage.image = UIImage(named: "deadAlligator2")
+            self.view.addSubview(deadalligatorImage)
+            deadalligatorImage.translatesAutoresizingMaskIntoConstraints = true
+            deadalligatorImage.center = CGPoint(x: (view.bounds.width/2+22), y: view.bounds.height/3+55)
+            deadalligatorImage.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
+
+
 }
+
 }

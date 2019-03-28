@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SurivedViewController: UIViewController {
-    @IBOutlet weak var survivedBackgroud: UIImageView!
+//    @IBOutlet weak var survivedBackgroud: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //background Image
+        let deadbackgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        deadbackgroundImage.image = UIImage(named: "deadBackground")
+        deadbackgroundImage.contentMode = .scaleAspectFill
+        self.view.insertSubview(deadbackgroundImage, at: 0)
 
         // Do any additional setup after loading the view.
     }
