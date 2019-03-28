@@ -27,6 +27,9 @@ class GameViewController: UIViewController {
     var deathCount = 0
     var notdiedCount = 0
     var death = false
+//    var timer = Timer()
+//    var progressView: UIProgressView?
+
     //life view test, will replace with Anna's UI file
     
 
@@ -34,6 +37,7 @@ class GameViewController: UIViewController {
     weak var delegate: GameViewDelegate?
     
      var random_sequence = [] as [Int]
+    
 
     
     var layers = [] as [CAShapeLayer]
@@ -96,48 +100,58 @@ class GameViewController: UIViewController {
         y2 = Double(screenHeight) - 35.5
         y3 = y2
         y1 = y2 - 46.0
-        
+    
         xx1 = 172.49 + Double(mathForTeethPosition2)
         yy1 = Double(screenHeight) - 199.6
         xx2 = xx1
         xx3 = xx1 + 37
         yy2 = yy1 + 53
         yy3 = yy1 + 12
-
-
-        //  self.life.sizeToFit()
-        //  life.text = "❤️❤️❤️❤️❤️"
+        
         x3 = x2 + Double(teethOffset)
         x1 = x2 + Double(teethOffset)/2
-        
-        // xx3 = xx2 + Double(teethOffset2)
-        //xx1 = xx2 + Double(teethOffset2)/2
-        
         //math the teeth position
-
-        
         
         drawTeeth()
-
+        
+        
+        // progress bar
+        addControls()
+     
         
         //challange: make the layer a string, and append the string?
         for i in 0...userNum-1{
             self.view.layer.addSublayer(layers[i])
         }
-        
-        print(mathForTeethPosition1)
-        print(mathForTeethPosition2)
-        print(xx1,yy1)
-        
-        print(alligatorImageViewHeight,alligatorImageViewWidth)
-        print(screenHeight,screenWidth)
-
+//
+//        print(mathForTeethPosition1)
+//        print(mathForTeethPosition2)
+//        print(xx1,yy1)
+//
+//        print(alligatorImageViewHeight,alligatorImageViewWidth)
+//        print(screenHeight,screenWidth)
 
     }
     
+
     
-    
-    
+//    func addControls() {
+//        // Create Progress View Control
+//        progressView = UIProgressView(progressViewStyle: UIProgressView.Style.default)
+//        progressView?.center = self.view.center
+//        view.addSubview(progressView!)
+//        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: Selector(("updateProgress")), userInfo: nil, repeats: true)
+//          //progressView?.progress = 0.0
+//        //timer?.invalidate()
+//    }
+//    
+//    func updateProgress() {
+//        progressView?.progress += 0.05
+//     
+//     
+//    }
+
+        
     func drawTeeth(){
    
         let color = UIColor.white
